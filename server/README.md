@@ -3,6 +3,9 @@
 ```shell
 ├── api
 │   └── v1
+│   │   └──Employeemanagement --员工管理
+│   │   │  ├──employee_struct.go --员工结构表
+│   │   │  └──enter.go
 ├── config
 ├── core
 ├── docs
@@ -11,6 +14,10 @@
 │   └── internal
 ├── middleware
 ├── model
+│   └──Employeemanagement --员工管理
+│   │  ├──request
+│   │  │  └──employee_struct.go --员工结构表
+│   │  └──employee_struct.go
 │   ├── request
 │   └── response
 ├── packfile
@@ -19,7 +26,13 @@
 │   ├── page
 │   └── template
 ├── router
+│   └──Employeemanagement --员工管理
+│   │  ├──employee_struct.go --员工结构表
+│   │  └──enter.go
 ├── service
+│   └──Employeemanagement --员工管理
+│   │  ├──employee_struct.go --员工结构表
+│   │  └──enter.go
 ├── source
 └── utils
     ├── timer

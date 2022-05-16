@@ -39,6 +39,7 @@ web
  ├── package.json               -- 包管理器代码
  ├── src                        -- 源代码
  │   ├── api                    -- api 组
+ │   │   └──employeeStruct.js 
  │   ├── App.vue                -- 主页面
  │   ├── assets                 -- 静态资源
  │   ├── components             -- 全局组件
@@ -80,6 +81,15 @@ web
  |   ├── view -- 主要view代码
  |   |   ├── about -- 关于我们
  |   |   ├── dashboard -- 面板
+ |   |   ├── employeemanagement -- 员工管理
+ |   |   |   ├──employeescreening --员工筛选
+ |   |   |   |  └──employeescreening.vue  
+ |   |   |   ├──Increasestaff --增加员工
+ |   |   |   |  └──Increasestaff.vue 
+ |   |   |   └──employeemanagement.vue
+ |   |   ├── employeeStruct --员工结构
+ |   |   |   ├──employeeStruct.vue
+ |   |   |   └──employeeStructForm.vue
  |   |   ├── error -- 错误
  |   |   ├── example --上传案例
  |   |   ├── iconList -- icon列表
