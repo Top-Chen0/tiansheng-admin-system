@@ -11,9 +11,16 @@
         <el-form-item label="年龄">
           <el-input v-model="searchInfo.age" placeholder="搜索条件" />
         </el-form-item>
-        <el-form-item label="性别">
-          <el-input v-model="searchInfo.sex" placeholder="搜索条件" />
+<!--        <el-form-item label="性别">-->
+<!--          <el-input v-model="searchInfo.sex" placeholder="搜索条件" />-->
+<!--        </el-form-item>-->
+<!--        性别筛选选项-->
+        <el-form-item label="性别:">
+          <el-select v-model="searchInfo.sex" placeholder="搜索条件" clearable>
+            <el-option v-for="(item,key) in genderOptions" :key="key" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
+
         <el-form-item>
           <el-button size="small" type="primary" icon="search" @click="onSubmit">查询</el-button>
           <el-button size="small" icon="refresh" @click="onReset">重置</el-button>
@@ -56,6 +63,7 @@
         </el-table-column>
         <el-table-column align="left" label="按钮组">
             <template #default="scope">
+            <el-button type="text" icon="search" size="small" class="table-button" @click="getEmployeeStructList(scope.row)">查看</el-button>
             <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructFunc(scope.row)">变更</el-button>
             <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
             </template>
@@ -120,6 +128,7 @@ import {
 import { getDictFunc, formatDate, formatBoolean, filterDict } from '@/utils/format'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref } from 'vue'
+import { getSysDictionaryList } from '@/api/sysDictionary'
 
 // 自动化生成的字典（可能为空）以及字段
 const genderOptions = ref([])
@@ -238,6 +247,18 @@ const onDelete = async() => {
 // 行为控制标记（弹窗内部需要增还是改）
 const type = ref('')
 
+
+                                                                               // 查询行
+const getEmployeeStructListFunc = async(row) => {
+  const res = await getEmployeeStructList({ ID: row.ID })
+  type.value = 'find'
+  if (res.code === 0) {
+    formData.value = res.data.reemployeeStruct
+    dialogFormVisible.value = true
+  }
+}
+
+
 // 更新行
 const updateEmployeeStructFunc = async(row) => {
     const res = await findEmployeeStruct({ ID: row.ID })
@@ -289,6 +310,9 @@ const enterDialog = async () => {
       switch (type.value) {
         case 'create':
           res = await createEmployeeStruct(formData.value)
+          break
+        case 'find':                                                         //查询
+          res = await updateEmployeeStruct(formData.value)
           break
         case 'update':
           res = await updateEmployeeStruct(formData.value)
