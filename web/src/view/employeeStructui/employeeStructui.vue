@@ -3,19 +3,19 @@
     <div class="gva-search-box">
       <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
         <el-form-item label="工号:">
-          <el-input v-model="searchInfo.worknumber" placeholder="搜索条件" :suffix-icon="Search" />
+          <el-input v-model="searchInfo.worknumber" placeholder="搜索条件" :suffix-icon="Search"  style="width: 220px"/>
         </el-form-item>
         <el-form-item label="姓名:">
-          <el-input v-model="searchInfo.name" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.name" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
         <el-form-item label="年龄:">
-          <el-input v-model="searchInfo.age" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.age" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
 <!--        <el-form-item label="性别">-->
 <!--          <el-input v-model="searchInfo.sex" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="性别:">
-          <el-select v-model="searchInfo.sex" placeholder="搜索条件" clearable>
+          <el-select v-model="searchInfo.sex" placeholder="搜索条件" clearable style="width: 220px">
             <el-option v-for="(item,key) in genderOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
@@ -24,7 +24,7 @@
 <!--          <el-input v-model="searchInfo.department" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="部门:">
-          <el-select v-model="formData.department" placeholder="请选择" clearable>
+          <el-select v-model="formData.department" placeholder="请选择" clearable style="width: 220px">
             <el-option v-for="(item,key) in departmentOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
@@ -33,7 +33,7 @@
 <!--          <el-input v-model="searchInfo.job" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="岗位:">
-          <el-select v-model="formData.job" placeholder="请选择" clearable>
+          <el-select v-model="formData.job" placeholder="请选择" clearable style="width: 220px">
             <el-option v-for="(item,key) in jobOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
@@ -50,14 +50,9 @@
 <!--        <el-form-item label="生日月份">-->
 <!--          <el-input v-model="searchInfo.birth_month" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
-        <el-form-item label="生日月份:">
-          <el-select v-model="formData.birth_month" placeholder="请选择" clearable>
-            <el-option v-for="(item,key) in birth_monthOptions" :key="key" :label="item.label" :value="item.value" />
-          </el-select>
-        </el-form-item>
 
         <el-form-item label="籍贯:">
-          <el-input v-model="searchInfo.origin" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.origin" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
 <!--        <el-form-item label="户口所在地">-->
 <!--          <el-input v-model="searchInfo.householdregistration" placeholder="搜索条件" />-->
@@ -65,11 +60,8 @@
 <!--        <el-form-item label="身份证详细地址">-->
 <!--          <el-input v-model="searchInfo.idaddress" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
-        <el-form-item label="现住详细地址:">
-          <el-input v-model="searchInfo.address" placeholder="搜索条件" />
-        </el-form-item>
         <el-form-item label="民族:">
-          <el-input v-model="searchInfo.ethnicgroup" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.ethnicgroup" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
 <!--        <el-form-item label="婚姻状况">-->
 <!--          <el-input v-model="searchInfo.marriage" placeholder="搜索条件" />-->
@@ -77,13 +69,29 @@
 <!--        <el-form-item label="政治面貌">-->
 <!--          <el-input v-model="searchInfo.politicalface" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
+        <el-form-item label="学历:">
+          <el-select v-model="formData.degree" placeholder="请选择" clearable style="width: 220px">
+            <el-option v-for="(item,key) in degreeOptions" :key="key" :label="item.label" :value="item.value" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="专业:">
+          <el-input v-model="searchInfo.specialized" placeholder="搜索条件" style="width: 220px"/>
+        </el-form-item>
+        <el-form-item label="生日月份:">
+          <el-select v-model="formData.birth_month" placeholder="请选择" clearable style="width: 192px">
+            <el-option v-for="(item,key) in birth_monthOptions" :key="key" :label="item.label" :value="item.value" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="现住地址:">
+          <el-input v-model="searchInfo.address" placeholder="搜索条件" style="width: 192px"/>
+        </el-form-item>
         <el-form-item label="婚姻状况:">
-          <el-select v-model="formData.marriage" placeholder="请选择" clearable>
+          <el-select v-model="formData.marriage" placeholder="请选择" clearable style="width: 192px">
             <el-option v-for="(item,key) in marriageOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="政治面貌:">
-          <el-select v-model="formData.politicalface" placeholder="请选择" clearable>
+          <el-select v-model="formData.politicalface" placeholder="请选择" clearable style="width: 192px">
             <el-option v-for="(item,key) in politicalfaceOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
@@ -95,7 +103,7 @@
 <!--          <el-input v-model="searchInfo.ec_number" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="手机号码:">
-          <el-input v-model="searchInfo.number" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.number" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
 <!--        <el-form-item label="与联系人的关系">-->
 <!--          <el-input v-model="searchInfo.ec_relationship" placeholder="搜索条件" />-->
@@ -103,29 +111,21 @@
 <!--        <el-form-item label="学历">-->
 <!--          <el-input v-model="searchInfo.degree" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
-        <el-form-item label="学历:">
-          <el-select v-model="formData.degree" placeholder="请选择" clearable>
-            <el-option v-for="(item,key) in degreeOptions" :key="key" :label="item.label" :value="item.value" />
-          </el-select>
-        </el-form-item>
 
         <el-form-item label="毕业院校:">
-          <el-input v-model="searchInfo.graduatingschool" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.graduatingschool" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
         <el-form-item label="毕业时间:">
-          <el-input v-model="searchInfo.graduationtime" placeholder="搜索条件" />
-        </el-form-item>
-        <el-form-item label="专业:">
-          <el-input v-model="searchInfo.specialized" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.graduationtime" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
 <!--        <el-form-item label="特长">-->
 <!--          <el-input v-model="searchInfo.specialty" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="个人技能:">
-          <el-input v-model="searchInfo.personalskills" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.personalskills" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
         <el-form-item label="专业职称:">
-          <el-input v-model="searchInfo.professionaltitle" placeholder="搜索条件" />
+          <el-input v-model="searchInfo.professionaltitle" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
 <!--        <el-form-item label="邮编">-->
 <!--          <el-input v-model="searchInfo.zip" placeholder="搜索条件" />-->
@@ -137,12 +137,12 @@
 <!--          <el-input v-model="searchInfo.socialsecurity" placeholder="搜索条件" />-->
 <!--        </el-form-item>-->
         <el-form-item label="部门经理:">
-          <el-select v-model="formData.departmentmanager" placeholder="请选择" clearable>
+          <el-select v-model="formData.departmentmanager" placeholder="请选择" clearable style="width: 192px">
             <el-option v-for="(item,key) in departmentmanagerOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="社保状态:">
-          <el-select v-model="formData.socialsecurity" placeholder="请选择" clearable>
+          <el-select v-model="formData.socialsecurity" placeholder="请选择" clearable style="width: 192px">
             <el-option v-for="(item,key) in socialsecurityOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>

@@ -8,7 +8,7 @@
       <el-divider direction="vertical" />
       <span>Copyright</span>
       <span>
-        <a href="https://top-chen.com">陈俊豪-李广奇团队-开发环境</a>
+        <a href="https://top-chen.com">陈俊豪-李广奇开发团队-开发环境</a>
       </span>
     </div>
   </div>
