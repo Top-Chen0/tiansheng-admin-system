@@ -83,23 +83,23 @@
       </div>
       <div class="login_panle_right" />
       <div class="login_panle_foot">
-        <div class="links">
-          <a href="http://doc.henrongyi.top/" target="_blank">
-            <img src="@/assets/docs.png" class="link-icon">
-          </a>
-          <a href="https://support.qq.com/product/371961" target="_blank">
-            <img src="@/assets/kefu.png" class="link-icon">
-          </a>
-          <a
-            href="https://github.com/flipped-aurora/gin-vue-admin"
-            target="_blank"
-          >
-            <img src="@/assets/github.png" class="link-icon">
-          </a>
-          <a href="https://space.bilibili.com/322210472" target="_blank">
-            <img src="@/assets/video.png" class="link-icon">
-          </a>
-        </div>
+  <!--        <div class="links">-->
+  <!--          <a href="http://doc.henrongyi.top/" target="_blank">-->
+  <!--            <img src="@/assets/docs.png" class="link-icon">-->
+  <!--          </a>-->
+  <!--          <a href="https://support.qq.com/product/371961" target="_blank">-->
+  <!--            <img src="@/assets/kefu.png" class="link-icon">-->
+  <!--          </a>-->
+  <!--          <a-->
+  <!--            href="https://github.com/flipped-aurora/gin-vue-admin"-->
+  <!--            target="_blank"-->
+  <!--          >-->
+  <!--            <img src="@/assets/github.png" class="link-icon">-->
+  <!--          </a>-->
+  <!--          <a href="https://space.bilibili.com/322210472" target="_blank">-->
+  <!--            <img src="@/assets/video.png" class="link-icon">-->
+  <!--          </a>-->
+  <!--        </div>-->
         <div class="copyright">
           <bootomInfo />
         </div>
@@ -159,8 +159,8 @@ const changeLock = () => {
 const loginForm = ref(null)
 const picPath = ref('')
 const loginFormData = reactive({
-  username: 'admin',
-  password: '123456',
+  username: '',
+  password: '',
   captcha: '',
   captchaId: '',
 })
