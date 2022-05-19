@@ -61,7 +61,7 @@ func (employeeStructuiService *EmployeeStructuiService) GetEmployeeStructuiInfoL
 		db = db.Where("name LIKE ?", "%"+info.Name+"%")
 	}
 	if info.Age != nil {
-		db = db.Where("age <> ?", info.Age)
+		db = db.Where("age = ?", info.Age)
 	}
 	if info.Sex != nil {
 		db = db.Where("sex = ?", info.Sex)
@@ -73,13 +73,13 @@ func (employeeStructuiService *EmployeeStructuiService) GetEmployeeStructuiInfoL
 		db = db.Where("job = ?", info.Job)
 	}
 	if info.Dateofentry != nil {
-		db = db.Where("dateofentry <> ?", info.Dateofentry)
+		db = db.Where("dateofentry = ?", info.Dateofentry)
 	}
 	if info.Socialsecuritynumber != "" {
 		db = db.Where("socialsecuritynumber LIKE ?", "%"+info.Socialsecuritynumber+"%")
 	}
 	if info.Dateofbirth != nil {
-		db = db.Where("dateofbirth <> ?", info.Dateofbirth)
+		db = db.Where("dateofbirth = ?", info.Dateofbirth)
 	}
 	if info.Birth_month != nil {
 		db = db.Where("birth_month = ?", info.Birth_month)
@@ -124,7 +124,7 @@ func (employeeStructuiService *EmployeeStructuiService) GetEmployeeStructuiInfoL
 		db = db.Where("graduatingschool LIKE ?", "%"+info.Graduatingschool+"%")
 	}
 	if info.Graduationtime != nil {
-		db = db.Where("graduationtime <> ?", info.Graduationtime)
+		db = db.Where("graduationtime = ?", info.Graduationtime)
 	}
 	if info.Specialized != "" {
 		db = db.Where("specialized LIKE ?", "%"+info.Specialized+"%")
@@ -139,7 +139,7 @@ func (employeeStructuiService *EmployeeStructuiService) GetEmployeeStructuiInfoL
 		db = db.Where("professionaltitle LIKE ?", "%"+info.Professionaltitle+"%")
 	}
 	if info.Zip != nil {
-		db = db.Where("zip <> ?", info.Zip)
+		db = db.Where("zip = ?", info.Zip)
 	}
 	if info.Departmentmanager != nil {
 		db = db.Where("departmentmanager = ?", info.Departmentmanager)

@@ -374,7 +374,8 @@ const enterForm = async(isPreview) => {
           // 不是IE浏览器
           const url = window.URL.createObjectURL(blob)
           const link = document.createElement('a')
-          link.style.display = 'none'
+          link.style.display = 'block'
+          // link.style.display = 'none'
           link.href = url
           link.setAttribute('download', fileName)
           document.body.appendChild(link)
