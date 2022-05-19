@@ -183,15 +183,9 @@
         >
           //数据表格
         <el-table-column type="selection" width="55" />
-          <el-table-column align="left" label="按钮组" width="130px">
-            <template #default="scope">
-              <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructuiFunc(scope.row)">详情-变更</el-button>
-              <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
-            </template>
-          </el-table-column>
-          <el-table-column align="left" label="日期" width="180">
-            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>
-          </el-table-column>
+<!--          <el-table-column align="left" label="日期" width="180">-->
+<!--            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>-->
+<!--          </el-table-column>-->
           <el-table-column align="left" label="工号" prop="worknumber" width="120" />
           <el-table-column align="left" label="姓名" prop="name" width="120" />
           <el-table-column align="left" label="年龄" prop="age" width="120" />
@@ -257,6 +251,12 @@
         <el-table-column align="left" label="社保状态" prop="socialsecurity" width="120">
             <template #default="scope">
             {{ filterDict(scope.row.socialsecurity,socialsecurityOptions) }}
+            </template>
+        </el-table-column>
+        <el-table-column align="left" label="按钮组" width="130px">
+            <template #default="scope">
+              <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructuiFunc(scope.row)">详情-变更</el-button>
+              <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
             </template>
         </el-table-column>
 

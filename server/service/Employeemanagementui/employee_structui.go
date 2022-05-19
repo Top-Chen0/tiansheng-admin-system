@@ -63,6 +63,9 @@ func (employeeStructuiService *EmployeeStructuiService) GetEmployeeStructuiInfoL
 	if info.Age != nil {
 		db = db.Where("age = ?", info.Age)
 	}
+	if info.Age != nil {
+		db = db.Where("age > ? and age < ?", info.Age)
+	}
 	if info.Sex != nil {
 		db = db.Where("sex = ?", info.Sex)
 	}
