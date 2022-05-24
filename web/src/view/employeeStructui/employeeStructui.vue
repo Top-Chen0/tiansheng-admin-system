@@ -1,4 +1,5 @@
-<template>
+<!--员工筛选页面-->
+<template xmlns:trackBy="http://www.w3.org/1999/xhtml">
   <div>
     <div class="gva-search-box">
 <!--      :inline="true"数据并列-->
@@ -182,78 +183,78 @@
         @selection-change="handleSelectionChange"
         >
           //数据表格
-        <el-table-column type="selection" width="55" />
+        <el-table-column type="selection" width="40" />
 <!--          <el-table-column align="left" label="日期" width="180">-->
 <!--            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>-->
 <!--          </el-table-column>-->
-          <el-table-column align="left" label="工号" prop="worknumber" width="120" />
-          <el-table-column align="left" label="姓名" prop="name" width="120" />
-          <el-table-column align="left" label="年龄" prop="age" width="120" />
-          <el-table-column align="left" label="性别" prop="sex" width="120">
+          <el-table-column align="center" label="工号" prop="worknumber" width="60" />
+          <el-table-column align="center" label="姓名" prop="name" width="70" />
+          <el-table-column align="center" label="年龄" prop="age" width="60" />
+          <el-table-column align="center" label="性别" prop="sex" width="55">
             <template #default="scope">
               {{ filterDict(scope.row.sex,genderOptions) }}
             </template>
           </el-table-column>
-          <el-table-column align="left" label="部门" prop="department" width="120">
+          <el-table-column align="center" label="部门" prop="department" width="330">
             <template #default="scope">
             {{ filterDict(scope.row.department,departmentOptions) }}
             </template>
         </el-table-column>
-        <el-table-column align="left" label="岗位" prop="job" width="120">
+        <el-table-column align="center" label="岗位" prop="job" width="150">
             <template #default="scope">
             {{ filterDict(scope.row.job,jobOptions) }}
             </template>
         </el-table-column>
-        <el-table-column align="left" label="入职日期" prop="dateofentry" width="120" />
-        <el-table-column align="left" label="身份证号" prop="socialsecuritynumber" width="120" />
-        <el-table-column align="left" label="出生日期" prop="dateofbirth" width="120" />
-        <el-table-column align="left" label="生日月份" prop="birth_month" width="120">
-            <template #default="scope">
-            {{ filterDict(scope.row.birth_month,birth_monthOptions) }}
-            </template>
-        </el-table-column>
-        <el-table-column align="left" label="籍贯" prop="origin" width="120" />
-        <el-table-column align="left" label="户口所在地" prop="householdregistration" width="120" />
-        <el-table-column align="left" label="身份证详细地址" prop="idaddress" width="120" />
-        <el-table-column align="left" label="现住详细地址" prop="address" width="120" />
-        <el-table-column align="left" label="民族" prop="ethnicgroup" width="120" />
-        <el-table-column align="left" label="婚姻状况" prop="marriage" width="120">
-            <template #default="scope">
-            {{ filterDict(scope.row.marriage,marriageOptions) }}
-            </template>
-        </el-table-column>
-        <el-table-column align="left" label="政治面貌" prop="politicalface" width="120">
-            <template #default="scope">
-            {{ filterDict(scope.row.politicalface,politicalfaceOptions) }}
-            </template>
-        </el-table-column>
-        <el-table-column align="left" label="紧急联系人" prop="emergencycontacts" width="120" />
-        <el-table-column align="left" label="紧急联系人电话" prop="ec_number" width="120" />
-        <el-table-column align="left" label="手机号码" prop="number" width="120" />
-        <el-table-column align="left" label="与联系人的关系" prop="ec_relationship" width="120" />
-        <el-table-column align="left" label="学历" prop="degree" width="120">
-            <template #default="scope">
-            {{ filterDict(scope.row.degree,degreeOptions) }}
-            </template>
-        </el-table-column>
-        <el-table-column align="left" label="毕业院校" prop="graduatingschool" width="120" />
-        <el-table-column align="left" label="毕业时间" prop="graduationtime" width="120" />
-        <el-table-column align="left" label="专业" prop="specialized" width="120" />
-        <el-table-column align="left" label="特长" prop="specialty" width="120" />
-        <el-table-column align="left" label="个人技能" prop="personalskills" width="120" />
-        <el-table-column align="left" label="专业职称" prop="professionaltitle" width="120" />
-        <el-table-column align="left" label="邮编" prop="zip" width="120" />
-        <el-table-column align="left" label="部门经理" prop="departmentmanager" width="120">
+<!--        <el-table-column align="left" label="入职日期" prop="dateofentry" width="120" />-->
+<!--        <el-table-column align="left" label="身份证号" prop="socialsecuritynumber" width="120" />-->
+<!--        <el-table-column align="left" label="出生日期" prop="dateofbirth" width="120" />-->
+<!--        <el-table-column align="left" label="生日月份" prop="birth_month" width="120">-->
+<!--            <template #default="scope">-->
+<!--            {{ filterDict(scope.row.birth_month,birth_monthOptions) }}-->
+<!--            </template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column align="left" label="籍贯" prop="origin" width="120" />-->
+<!--        <el-table-column align="left" label="户口所在地" prop="householdregistration" width="120" />-->
+<!--        <el-table-column align="left" label="身份证详细地址" prop="idaddress" width="120" />-->
+<!--        <el-table-column align="left" label="现住详细地址" prop="address" width="120" />-->
+<!--        <el-table-column align="left" label="民族" prop="ethnicgroup" width="120" />-->
+<!--        <el-table-column align="left" label="婚姻状况" prop="marriage" width="120">-->
+<!--            <template #default="scope">-->
+<!--            {{ filterDict(scope.row.marriage,marriageOptions) }}-->
+<!--            </template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column align="left" label="政治面貌" prop="politicalface" width="120">-->
+<!--            <template #default="scope">-->
+<!--            {{ filterDict(scope.row.politicalface,politicalfaceOptions) }}-->
+<!--            </template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column align="left" label="紧急联系人" prop="emergencycontacts" width="120" />-->
+<!--        <el-table-column align="left" label="紧急联系人电话" prop="ec_number" width="120" />-->
+<!--        <el-table-column align="left" label="手机号码" prop="number" width="120" />-->
+<!--        <el-table-column align="left" label="与联系人的关系" prop="ec_relationship" width="120" />-->
+<!--        <el-table-column align="left" label="学历" prop="degree" width="120">-->
+<!--            <template #default="scope">-->
+<!--            {{ filterDict(scope.row.degree,degreeOptions) }}-->
+<!--            </template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column align="left" label="毕业院校" prop="graduatingschool" width="120" />-->
+<!--        <el-table-column align="left" label="毕业时间" prop="graduationtime" width="120" />-->
+<!--        <el-table-column align="left" label="专业" prop="specialized" width="120" />-->
+<!--        <el-table-column align="left" label="特长" prop="specialty" width="120" />-->
+<!--        <el-table-column align="left" label="个人技能" prop="personalskills" width="120" />-->
+<!--        <el-table-column align="left" label="专业职称" prop="professionaltitle" width="120" />-->
+<!--        <el-table-column align="left" label="邮编" prop="zip" width="120" />-->
+        <el-table-column align="center" label="部门经理" prop="departmentmanager" width="120">
             <template #default="scope">
             {{ filterDict(scope.row.departmentmanager,departmentmanagerOptions) }}
             </template>
         </el-table-column>
-        <el-table-column align="left" label="社保状态" prop="socialsecurity" width="120">
+        <el-table-column align="center" label="社保状态" prop="socialsecurity" width="120">
             <template #default="scope">
             {{ filterDict(scope.row.socialsecurity,socialsecurityOptions) }}
             </template>
         </el-table-column>
-        <el-table-column align="left" label="按钮组" width="130px">
+        <el-table-column align="left" label="按钮组" width="150px">
             <template #default="scope">
               <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructuiFunc(scope.row)">详情-变更</el-button>
               <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
@@ -389,6 +390,9 @@
             <el-option v-for="(item,key) in socialsecurityOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
+
+
+
       </el-form>
       <template #footer>
         <div class="dialog-footer">
