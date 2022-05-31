@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+//操作数据库增加字段
 // EmployeeStructui 结构体
 // 如果含有time.Time 请自行import time包
 type EmployeeStructui struct {
@@ -41,6 +42,7 @@ type EmployeeStructui struct {
 	Zip                   *int       `json:"zip" form:"zip" gorm:"column:zip;comment:邮编;size:6;"`
 	Departmentmanager     *int       `json:"departmentmanager" form:"departmentmanager" gorm:"column:departmentmanager;comment:部门经理;"`
 	Socialsecurity        *int       `json:"socialsecurity" form:"socialsecurity" gorm:"column:socialsecurity;comment:社保状态;"`
+	EmployeeImg           string     `json:"employeeImg" gorm:"default:https://qmplusimg.henrongyi.top/gva_header.jpg;comment:员工照片;"`
 }
 
 // TableName EmployeeStructui 表名

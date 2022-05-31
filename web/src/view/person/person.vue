@@ -4,6 +4,8 @@
       <el-col :span="6">
         <div class="fl-left avatar-box">
           <div class="user-card">
+
+<!--            头像加载-->
             <div
               class="user-headpic-update"
               :style="{
@@ -23,6 +25,7 @@
                 </el-icon>
                 重新上传</span>
             </div>
+
             <div class="user-personality">
               <p v-if="!editFlag" class="nickName">
                 {{ userStore.userInfo.nickName }}
@@ -52,21 +55,21 @@
                 <el-tooltip
                   class="item"
                   effect="light"
-                  content="北京反转极光科技有限公司-技术部-前端事业群"
+                  content="河南天盛景观设计院有限公司"
                   placement="top"
                 >
                   <li>
                     <el-icon>
                       <data-analysis />
                     </el-icon>
-                    北京反转极光科技有限公司-技术部-前端事业群
+                    河南天盛景观设计院有限公司
                   </li>
                 </el-tooltip>
                 <li>
                   <el-icon>
                     <video-camera />
                   </el-icon>
-                  中国·北京市·朝阳区
+                  中国·郑州市·高新区
                 </li>
                 <el-tooltip
                   class="item"
@@ -74,12 +77,12 @@
                   content="GoLang/JavaScript/Vue/Gorm"
                   placement="top"
                 >
-                  <li>
-                    <el-icon>
-                      <medal />
-                    </el-icon>
-                    GoLang/JavaScript/Vue/Gorm
-                  </li>
+<!--                  <li>-->
+<!--                    <el-icon>-->
+<!--                      <medal />-->
+<!--                    </el-icon>-->
+<!--                    测试-->
+<!--                  </li>-->
                 </el-tooltip>
               </ul>
             </div>
@@ -307,6 +310,17 @@ const enterImg = async(url) => {
   const res = await setSelfInfo({ headerImg: url })
   if (res.code === 0) {
     userStore.ResetUserInfo({ headerImg: url })
+    ElMessage({
+      type: 'success',
+      message: '设置成功',
+    })
+  }
+}
+
+const enterrImg = async(url) => {
+  const res = await setSelfInfo({ employeeImg: url })
+  if (res.code === 0) {
+    userStore.ResetUserInfo({ employeeImg: url })
     ElMessage({
       type: 'success',
       message: '设置成功',

@@ -9,17 +9,21 @@
         :data="tableData"
         row-key="ID"
       >
+<!--        头像选择框-->
         <el-table-column align="left" label="头像" min-width="75">
+<!--          头像容器-->
           <template #default="scope">
             <CustomPic style="margin-top:8px" :pic-src="scope.row.headerImg" />
           </template>
         </el-table-column>
+
         <el-table-column align="left" label="ID" min-width="50" prop="ID" />
         <el-table-column align="left" label="用户名" min-width="150" prop="userName" />
         <el-table-column align="left" label="昵称" min-width="150" prop="nickName" />
         <el-table-column align="left" label="手机号" min-width="180" prop="phone" />
         <el-table-column align="left" label="邮箱" min-width="180" prop="email" />
         <el-table-column align="left" label="用户角色" min-width="200">
+<!--          用户权限-->
           <template #default="scope">
             <el-cascader
               v-model="scope.row.authorityIds"
@@ -273,11 +277,11 @@ const userInfo = ref({
 const rules = ref({
   userName: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 5, message: '最低5位字符', trigger: 'blur' }
+    { min: 2, message: '最低2位字符', trigger: 'blur' }
   ],
   password: [
     { required: true, message: '请输入用户密码', trigger: 'blur' },
-    { min: 6, message: '最低6位字符', trigger: 'blur' }
+    { min: 3, message: '最低3位字符', trigger: 'blur' }
   ],
   nickName: [
     { required: true, message: '请输入用户昵称', trigger: 'blur' }

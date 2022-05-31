@@ -1,5 +1,5 @@
 <!--员工筛选页面-->
-<template xmlns:trackBy="http://www.w3.org/1999/xhtml">
+<template >
   <div>
     <div class="gva-search-box">
 <!--      :inline="true"数据并列-->
@@ -276,7 +276,7 @@
     </div>
     <!--    Dialog对话框-->
     <!--    :inline="true"数据并列-->
-    <el-dialog v-model="dialogFormVisible" :before-close="closeDialog" title="详情-变更" width="80%">
+    <el-dialog v-model="dialogFormVisible" :before-close="closeDialog" title="详情-变更" width="80%" center>
 <!--      设置数据距离左侧宽度label-width="120px"-->
       <el-form :inline="true" :model="formData" label-position="right" label-width="120px">
         <el-form-item label="工号:">
@@ -391,7 +391,68 @@
           </el-select>
         </el-form-item>
 
+<!--        预览图-->
+        <div class="gva-table-box">
 
+<!--          头像加载代替图像加载demo-->
+<!--          <div-->
+<!--              class="user-headpic-update"-->
+<!--              :style="{-->
+<!--                'background-image': `url(${-->
+<!--                  userStore.userInfo.headerImg &&-->
+<!--                  userStore.userInfo.headerImg.slice(0, 4) !== 'http'-->
+<!--                    ? path + userStore.userInfo.headerImg-->
+<!--                    : userStore.userInfo.headerImg-->
+<!--                })`,-->
+<!--                'background-repeat': 'no-repeat',-->
+<!--                'background-size': 'cover',-->
+<!--              }"-->
+<!--          >-->
+<!--              <span class="update" @click="openChooseImg">-->
+<!--                <el-icon>-->
+<!--                  <edit />-->
+<!--                </el-icon>-->
+<!--                重新上传</span>-->
+<!--          </div>-->
+
+<!--          图像加载-->
+
+          <el-form-item label="预览：" label-width="80px">
+<!--            备用1给李总展示用-->
+<!--            <div style="display:inline-block" @click="openHeaderChange">-->
+<!--              <img style="width: 270px; height: 360px" v-if="userInfo.headerImg" class="header-img-box" :src="(userInfo.headerImg && userInfo.headerImg.slice(0, 4) !== 'http')?path+userInfo.headerImg:userInfo.headerImg" />-->
+<!--              <div v-else class="header-img-box">从媒体库选择</div>-->
+<!--              <ChooseImg ref="chooseImg" :target="userInfo" :target-key="`headerImg`" />-->
+<!--            </div>-->
+
+            <!--            自己修改用-->
+            <div style="display:inline-block" @click="openHeaderChange">
+              <img style="width: 270px; height: 360px" v-if="employeeimgInfo.employeeImg" class="header-img-box" :src="(employeeimgInfo.employeeImg && employeeimgInfo.employeeImg.slice(0, 4) !== 'http')?path+employeeimgInfo.employeeImg:employeeimgInfo.employeeImg" />
+              <div v-else class="header-img-box">从媒体库选择</div>
+              <ChooseImg ref="chooseImg" :target="employeeimgInfo" :target-key="`employeeImg`" />
+            </div>
+          </el-form-item>
+
+
+<!--          创建一个表格用于存储员工的照片-->
+          <div class="gva-table-box">
+            <el-table :data="假数据" style="width: 100%">
+              <el-table-column
+                  prop="tag"
+                  label="图像："
+                  width="200"
+              >
+                <template #default="scope">
+                  <el-image
+                      :type="scope.row.tag === 'Home' ? '' : 'success'"
+                      disable-transitions
+                  >{{ scope.row.tag }}</el-image>
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+
+        </div>
 
       </el-form>
       <template #footer>
@@ -401,6 +462,12 @@
         </div>
       </template>
     </el-dialog>
+
+
+
+
+
+
   </div>
 </template>
 
@@ -420,11 +487,15 @@ import {
   getEmployeeStructuiList
 } from '@/api/employeeStructui'
 
+//导入图像包
+import ChooseImg from '@/components/chooseImg/index.vue'
+
 // 全量引入格式化工具 请按需保留
 import { getDictFunc, formatDate, formatBoolean, filterDict } from '@/utils/format'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import { useUserStore } from '@/pinia/modules/user'
 
 // 自动化生成的字典（可能为空）以及字段
 const jobOptions = ref([])
@@ -661,6 +732,8 @@ const closeDialog = () => {
         zip: 0,
         departmentmanager: undefined,
         socialsecurity: undefined,
+        employeeImg: '',
+
         }
 }
 // 弹窗确定
@@ -676,7 +749,7 @@ const enterDialog = async () => {
         default:
           res = await createEmployeeStructui(formData.value)
           break
-      }
+      }``
       if (res.code === 0) {
         ElMessage({
           type: 'success',
@@ -686,7 +759,115 @@ const enterDialog = async () => {
         getTableData()
       }
 }
+
+//头像加载代替图像加载demo
+// const userStore = useUserStore()
+// const path = ref(import.meta.env.VITE_BASE_API)
+// const openChooseImg = () => {
+//   chooseImgRef.value.open()
+// }
+
+
+//图像加载
+const chooseImg = ref(null)
+const openHeaderChange = () => {
+  chooseImg.value.open()
+}
+
+// 图像加载弹窗相关
+const employeeimgInfo = ref({
+  employeeImg: '',
+})
+
+const userInfo = ref({
+  headerImg: '',
+})
+const path = ref(import.meta.env.VITE_BASE_API)
+
 </script>
 
 <style>
 </style>
+
+<!--头像加载代替图像加载demo-->
+<!--<style lang="scss">-->
+<!--.user-headpic-update {-->
+<!--width: 120px;-->
+<!--height: 120px;-->
+<!--line-height: 120px;-->
+<!--margin: 0 auto;-->
+<!--display: flex;-->
+<!--justify-content: center;-->
+<!--border-radius: 20px;-->
+<!--&:hover {-->
+<!--color: #fff;-->
+<!--background: linear-gradient(-->
+<!--to bottom,-->
+<!--rgba(255, 255, 255, 0.15) 0%,-->
+<!--rgba(0, 0, 0, 0.15) 100%-->
+<!--),-->
+<!--radial-gradient(-->
+<!--at top center,-->
+<!--rgba(255, 255, 255, 0.4) 0%,-->
+<!--rgba(0, 0, 0, 0.4) 120%-->
+<!--)-->
+<!--#989898;-->
+<!--background-blend-mode: multiply, multiply;-->
+<!--.update {-->
+<!--color: #fff;-->
+<!--}-->
+<!--}-->
+<!--.update {-->
+<!--height: 120px;-->
+<!--width: 120px;-->
+<!--text-align: center;-->
+<!--color: transparent;-->
+<!--}-->
+<!--}-->
+<!--</style>-->
+
+
+<!--图片加载-->
+<style lang="scss">
+.user-dialog {
+  .header-img-box {
+  width: 200px;
+  height: 200px;
+  border: 1px dashed #ccc;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 200px;
+  cursor: pointer;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409eff;
+  }
+  .avatar-uploader-icon {
+    border: 1px dashed #d9d9d9 !important;
+    border-radius: 6px;
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+}
+.nickName{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.pointer{
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 2px;
+}
+</style>
+
+

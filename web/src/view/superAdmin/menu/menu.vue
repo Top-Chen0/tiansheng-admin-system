@@ -382,7 +382,7 @@ const initForm = () => {
 }
 // 关闭弹窗
 
-const dialogFormVisible = ref(false)
+const ialogFormVisible = ref(false)
 const closeDialog = () => {
   initForm()
   dialogFormVisible.value = false

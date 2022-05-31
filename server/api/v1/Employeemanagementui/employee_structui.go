@@ -81,7 +81,8 @@ func (employeeStructuiApi *EmployeeStructuiApi) DeleteEmployeeStructuiByIds(c *g
 // @Summary 更新EmployeeStructui
 // @Security ApiKeyAuth
 // @accept application/json
-// @Produce application/json
+// @Produce application/json.
+
 // @Param data body Employeemanagementui.EmployeeStructui true "更新EmployeeStructui"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"更新成功"}"
 // @Router /employeeStructui/updateEmployeeStructui [put]
