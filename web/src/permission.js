@@ -18,6 +18,12 @@ const getRouter = async(userStore) => {
 }
 
 async function handleKeepAlive(to) {
+
+  // 实现指定页面全屏employeesviewjumps是页面的路由name
+  if (to.name === 'employeesviewjumps') {
+    to.matched = [to.matched[to.matched.length - 1]]
+  }
+
   if (to.matched && to.matched.length > 2) {
     for (let i = 1; i < to.matched.length; i++) {
       const element = to.matched[i - 1]
