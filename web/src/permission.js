@@ -23,6 +23,12 @@ async function handleKeepAlive(to) {
   if (to.name === 'employeesviewjumps') {
     to.matched = [to.matched[to.matched.length - 1]]
   }
+  if (to.name === 'employeeStruct.Detail1') {
+    to.matched = [to.matched[to.matched.length - 1]]
+  }
+  if (to.name === 'EmployeeModificationhr') {
+    to.matched = [to.matched[to.matched.length - 1]]
+  }
 
   if (to.matched && to.matched.length > 2) {
     for (let i = 1; i < to.matched.length; i++) {

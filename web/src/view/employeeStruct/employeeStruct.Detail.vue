@@ -1,6 +1,7 @@
 <!--员工查看跳转页面-->
 <template>
-  <div>
+<!--  外层容器设置了高度和overflow实现滚动-->
+  <div style="height: 1000px; overflow: scroll">
 <!--    注意：chen-test-box已经被注解掉，整体无效-->
     <div class="chen-test-box">
       <div class="chen-test-title" v-for="fit in fits" :key="fit" >
@@ -14,6 +15,7 @@
 <!--    页面下拉栏Cascader 级联选择器-->
     <div class="example-block">
       <span class="example-demonstration; el-cascader-panel; input:focus"></span>
+<!--      排版思路：每层先确定最左侧的cascader再确定其它的cascader-->
 <!--      横排1-1cascader-->
       <el-cascader
           v-model="value"
@@ -23,8 +25,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
+          style="position: relative; left: 12%; top: 15%"
       />
-      <!--横排1-2这里的margin-left距离是相对于上一个cascader的距离-->
+      <!--横排1-2cascader-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -33,17 +36,8 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
-      />
-      <el-cascader
-          v-model="value"
-          :options="options"
-          :props="props"
-          @change="handleChange"
-          placeholder="Cascader 级联选择器"
-          clearable
-          class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 17%; top: 15%"
+
       />
       <el-cascader
           v-model="value"
@@ -53,7 +47,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 22%; top: 15%"
       />
       <el-cascader
           v-model="value"
@@ -63,10 +57,20 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 27%; top: 15%"
+      />
+      <el-cascader
+          v-model="value"
+          :options="options"
+          :props="props"
+          @change="handleChange"
+          placeholder="Cascader 级联选择器"
+          clearable
+          class="el-cascader-panel"
+          style="position: relative; left: 32%; top: 15%"
+
       />
 <!--      竖排2-1cascader-->
-      <!--这里的margin-top距离是相对于第一个cascader的距离-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -75,10 +79,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-top: 0px"
+          style="position: relative; left: -841px; top: 30%"
       />
       <!--      竖排2-2cascader-->
-      <!--这里的margin-left距离是相对于上一个cascader的距离-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -87,7 +90,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: -745px; top: 30%"
       />
       <el-cascader
           v-model="value"
@@ -97,7 +100,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: -650px; top: 30%"
       />
       <el-cascader
           v-model="value"
@@ -107,7 +110,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 1158px; top: 17%"
       />
       <el-cascader
           v-model="value"
@@ -117,10 +120,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 1255px; top: 17%"
       />
       <!--      竖排3-1cascader-->
-      <!--这里的margin-top距离是相对于第一个cascader的距离-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -129,10 +131,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-top: 0px"
+          style="position: relative; left: -200px; top: 32%"
       />
       <!--      竖排3-2cascader-->
-      <!--这里的margin-left距离是相对于上一个cascader的距离-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -141,7 +142,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: -104px; top: 32%"
       />
       <el-cascader
           v-model="value"
@@ -151,7 +152,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: -09px; top: 32%"
       />
       <el-cascader
           v-model="value"
@@ -161,7 +162,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 88px; top: 32%"
       />
       <el-cascader
           v-model="value"
@@ -171,10 +172,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 185px; top: 32%"
       />
       <!--      竖排4-1cascader-->
-      <!--这里的margin-top距离是相对于第一个cascader的距离-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -183,10 +183,9 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-top: 0px"
+          style="position: relative; left: -1270px; top: 47%"
       />
-      <!--      竖排4-2cascader-->
-      <!--这里的margin-left距离是相对于上一个cascader的距离-->
+      <!--      竖排4-1cascader-->
       <el-cascader
           v-model="value"
           :options="options"
@@ -195,7 +194,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 538px; top: 34%"
       />
       <el-cascader
           v-model="value"
@@ -205,7 +204,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 633px; top: 34%"
       />
       <el-cascader
           v-model="value"
@@ -215,7 +214,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 730px; top: 34%"
       />
       <el-cascader
           v-model="value"
@@ -225,10 +224,37 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="margin-left: 30px"
+          style="position: relative; left: 827px; top: 34%"
       />
     </div>
 
+
+       <!--    添加页面第二条横线-->
+    <div class="tableTitle0"><span class="midText0">这里是横线</span></div>
+
+<!--    第一个标题框筛选员工信息条件-->
+    <div>
+      <div class="tableTitle1"><span class="midText1" style="font-family: QingNiaoHuaGuangXingKai; background-color: #377ebb">筛选员工信息条件</span></div>
+    </div>
+<!--    添加筛选员工信息条件里的内容-->
+    <div class="example-block" style="background: #f94949;">
+
+    </div>
+<!--    添加页面第三条横线-->
+    <div class="tableTitle0"><span class="midText0">这里是横线</span></div>
+<!--第二个标题框员工信息详单-->
+    <div>
+      <div class="tableTitle1"><span class="midText1" style="font-family: QingNiaoHuaGuangXingKai; background-color: #377ebb">员工信息详单</span></div>
+    </div>
+    <!--    添加筛选员工信息详单里的内容-->
+    <div class="example-block" style="background: #f94949;">
+
+    </div>
+    <!--    添加页面第三条横线-->
+    <div class="tableTitle0"><span class="midText0">这里是横线</span></div>
+<!--最底栏-->
+    <div style="width: 100%;height: 110px;background-color: #377ebb;margin-top: 10px;">
+    </div>
 
   </div>
 </template>
@@ -531,10 +557,14 @@ const options = [
 /*margin-left:20px;是左外边距*/
 /*margin-right:20px;是右外边距*/
 .example-block {
+  /*容器大小*/
+  height: 300px;
+  background: #f94949;
+
   /*margin: 20rem;*/
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   /*margin-bottom: 20px;*/
-  margin-left:124px;
+  /*margin-left:124px;*/
   /*margin-right:20px;*/
 }
 .example-demonstration {
@@ -544,6 +574,8 @@ const options = [
 .el-cascader-panel{
   background: #f9c449 !important;
 }
+
+
 
 
 </style>

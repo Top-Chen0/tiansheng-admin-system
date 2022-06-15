@@ -80,9 +80,11 @@
         </transition>
         <router-view v-if="reloadFlag" v-slot="{ Component }" v-loading="loadingFlag" element-loading-text="正在加载中" class="admin-box">
           <transition mode="out-in" name="el-fade-in-linear">
+            <div>
             <keep-alive :include="routerStore.keepAliveRouters">
               <component :is="Component" />
             </keep-alive>
+            </div>
           </transition>
         </router-view>
         <BottomInfo />

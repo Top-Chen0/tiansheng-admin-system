@@ -2,7 +2,7 @@
 <template >
   <div>
     <div class="gva-search-box">
-<!--      :inline="true"数据并列-->
+      <!--      :inline="true"数据并列-->
       <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
         <el-form-item label="工号:">
           <el-input v-model="searchInfo.worknumber" placeholder="搜索条件" :suffix-icon="Search"  style="width: 220px"/>
@@ -13,64 +13,64 @@
         <el-form-item label="年龄:">
           <el-input v-model="searchInfo.age" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
-<!--        <el-form-item label="性别">-->
-<!--          <el-input v-model="searchInfo.sex" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="性别">-->
+        <!--          <el-input v-model="searchInfo.sex" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="性别:">
           <el-select v-model="searchInfo.sex" placeholder="搜索条件" clearable style="width: 220px">
             <el-option v-for="(item,key) in genderOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
 
-<!--        <el-form-item label="部门">-->
-<!--          <el-input v-model="searchInfo.department" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="部门">-->
+        <!--          <el-input v-model="searchInfo.department" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="部门:">
           <el-select v-model="searchInfo.department" placeholder="请选择" clearable style="width: 220px">
             <el-option v-for="(item,key) in departmentOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
 
-<!--        <el-form-item label="岗位">-->
-<!--          <el-input v-model="searchInfo.job" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="岗位">-->
+        <!--          <el-input v-model="searchInfo.job" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="岗位:">
           <el-select v-model="searchInfo.job" placeholder="请选择" clearable style="width: 220px">
             <el-option v-for="(item,key) in jobOptions" :key="key" :label="item.label" :value="item.value" />
           </el-select>
         </el-form-item>
-<!--        <el-form-item label="入职日期">-->
-<!--          <el-input v-model="searchInfo.dateofentry" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="身份证号">-->
-<!--          <el-input v-model="searchInfo.socialsecuritynumber" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="出生日期">-->
-<!--          <el-input v-model="searchInfo.dateofbirth" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="入职日期">-->
+        <!--          <el-input v-model="searchInfo.dateofentry" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="身份证号">-->
+        <!--          <el-input v-model="searchInfo.socialsecuritynumber" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="出生日期">-->
+        <!--          <el-input v-model="searchInfo.dateofbirth" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
 
-<!--        <el-form-item label="生日月份">-->
-<!--          <el-input v-model="searchInfo.birth_month" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="生日月份">-->
+        <!--          <el-input v-model="searchInfo.birth_month" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
 
         <el-form-item label="籍贯:">
           <el-input v-model="searchInfo.origin" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
-<!--        <el-form-item label="户口所在地">-->
-<!--          <el-input v-model="searchInfo.householdregistration" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="身份证详细地址">-->
-<!--          <el-input v-model="searchInfo.idaddress" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="户口所在地">-->
+        <!--          <el-input v-model="searchInfo.householdregistration" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="身份证详细地址">-->
+        <!--          <el-input v-model="searchInfo.idaddress" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="民族:">
           <el-input v-model="searchInfo.ethnicgroup" placeholder="搜索条件" style="width: 220px"/>
         </el-form-item>
-<!--        <el-form-item label="婚姻状况">-->
-<!--          <el-input v-model="searchInfo.marriage" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="政治面貌">-->
-<!--          <el-input v-model="searchInfo.politicalface" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="婚姻状况">-->
+        <!--          <el-input v-model="searchInfo.marriage" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="政治面貌">-->
+        <!--          <el-input v-model="searchInfo.politicalface" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="学历:">
           <el-select v-model="searchInfo.degree" placeholder="请选择" clearable style="width: 220px">
             <el-option v-for="(item,key) in degreeOptions" :key="key" :label="item.label" :value="item.value" />
@@ -98,46 +98,46 @@
           </el-select>
         </el-form-item>
 
-<!--        <el-form-item label="紧急联系人">-->
-<!--          <el-input v-model="searchInfo.emergencycontacts" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="紧急联系人电话">-->
-<!--          <el-input v-model="searchInfo.ec_number" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="紧急联系人">-->
+        <!--          <el-input v-model="searchInfo.emergencycontacts" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="紧急联系人电话">-->
+        <!--          <el-input v-model="searchInfo.ec_number" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="手机号码:">
           <el-input v-model="searchInfo.number" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
-<!--        <el-form-item label="与联系人的关系">-->
-<!--          <el-input v-model="searchInfo.ec_relationship" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="学历">-->
-<!--          <el-input v-model="searchInfo.degree" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="与联系人的关系">-->
+        <!--          <el-input v-model="searchInfo.ec_relationship" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="学历">-->
+        <!--          <el-input v-model="searchInfo.degree" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
 
         <el-form-item label="毕业院校:">
           <el-input v-model="searchInfo.graduatingschool" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
-<!--        <el-form-item label="毕业时间:">-->
-<!--          <el-input v-model="searchInfo.graduationtime" placeholder="搜索条件" style="width: 192px"/>-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="特长">-->
-<!--          <el-input v-model="searchInfo.specialty" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="毕业时间:">-->
+        <!--          <el-input v-model="searchInfo.graduationtime" placeholder="搜索条件" style="width: 192px"/>-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="特长">-->
+        <!--          <el-input v-model="searchInfo.specialty" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="个人技能:">
           <el-input v-model="searchInfo.personalskills" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
         <el-form-item label="专业职称:">
           <el-input v-model="searchInfo.professionaltitle" placeholder="搜索条件" style="width: 192px"/>
         </el-form-item>
-<!--        <el-form-item label="邮编">-->
-<!--          <el-input v-model="searchInfo.zip" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="部门经理">-->
-<!--          <el-input v-model="searchInfo.departmentmanager" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
-<!--        <el-form-item label="社保状态">-->
-<!--          <el-input v-model="searchInfo.socialsecurity" placeholder="搜索条件" />-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="邮编">-->
+        <!--          <el-input v-model="searchInfo.zip" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="部门经理">-->
+        <!--          <el-input v-model="searchInfo.departmentmanager" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
+        <!--        <el-form-item label="社保状态">-->
+        <!--          <el-input v-model="searchInfo.socialsecurity" placeholder="搜索条件" />-->
+        <!--        </el-form-item>-->
         <el-form-item label="部门经理:">
           <el-select v-model="searchInfo.departmentmanager" placeholder="请选择" clearable style="width: 192px">
             <el-option v-for="(item,key) in departmentmanagerOptions" :key="key" :label="item.label" :value="item.value" />
@@ -161,109 +161,109 @@
       </el-form>
     </div>
     <div class="gva-table-box">
-        <div class="gva-btn-list">
-            <el-button size="small" type="primary" icon="plus" @click="openDialog">新增</el-button>
-            <el-popover v-model:visible="deleteVisible" placement="top" width="160">
-            <p>确定要删除吗？</p>
-            <div style="text-align: right; margin-top: 8px;">
-                <el-button size="small" type="text" @click="deleteVisible = false">取消</el-button>
-                <el-button size="small" type="primary" @click="onDelete">确定</el-button>
-            </div>
-            <template #reference>
-                <el-button icon="delete" size="small" style="margin-left: 10px;" :disabled="!multipleSelection.length" @click="deleteVisible = true">删除</el-button>
-            </template>
-            </el-popover>
-        </div>
-        <el-table
-        ref="multipleTable"
-        style="width: 100%"
-        tooltip-effect="dark"
-        :data="tableData"
-        row-key="ID"
-        @selection-change="handleSelectionChange"
-        >
-          //数据表格
+      <div class="gva-btn-list">
+        <el-button size="small" type="primary" icon="plus" @click="openDialog">新增</el-button>
+        <el-popover v-model:visible="deleteVisible" placement="top" width="160">
+          <p>确定要删除吗？</p>
+          <div style="text-align: right; margin-top: 8px;">
+            <el-button size="small" type="text" @click="deleteVisible = false">取消</el-button>
+            <el-button size="small" type="primary" @click="onDelete">确定</el-button>
+          </div>
+          <template #reference>
+            <el-button icon="delete" size="small" style="margin-left: 10px;" :disabled="!multipleSelection.length" @click="deleteVisible = true">删除</el-button>
+          </template>
+        </el-popover>
+      </div>
+      <el-table
+          ref="multipleTable"
+          style="width: 100%"
+          tooltip-effect="dark"
+          :data="tableData"
+          row-key="ID"
+          @selection-change="handleSelectionChange"
+      >
+        //数据表格
         <el-table-column type="selection" width="40" />
-<!--          <el-table-column align="left" label="日期" width="180">-->
-<!--            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>-->
-<!--          </el-table-column>-->
-          <el-table-column align="center" label="工号" prop="worknumber" width="60" />
-          <el-table-column align="center" label="姓名" prop="name" width="70" />
-          <el-table-column align="center" label="年龄" prop="age" width="60" />
-          <el-table-column align="center" label="性别" prop="sex" width="55">
-            <template #default="scope">
-              {{ filterDict(scope.row.sex,genderOptions) }}
-            </template>
-          </el-table-column>
-          <el-table-column align="center" label="部门" prop="department" width="330">
-            <template #default="scope">
+        <!--          <el-table-column align="left" label="日期" width="180">-->
+        <!--            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>-->
+        <!--          </el-table-column>-->
+        <el-table-column align="center" label="工号" prop="worknumber" width="60" />
+        <el-table-column align="center" label="姓名" prop="name" width="70" />
+        <el-table-column align="center" label="年龄" prop="age" width="60" />
+        <el-table-column align="center" label="性别" prop="sex" width="55">
+          <template #default="scope">
+            {{ filterDict(scope.row.sex,genderOptions) }}
+          </template>
+        </el-table-column>
+        <el-table-column align="center" label="部门" prop="department" width="330">
+          <template #default="scope">
             {{ filterDict(scope.row.department,departmentOptions) }}
-            </template>
+          </template>
         </el-table-column>
         <el-table-column align="center" label="岗位" prop="job" width="150">
-            <template #default="scope">
+          <template #default="scope">
             {{ filterDict(scope.row.job,jobOptions) }}
-            </template>
+          </template>
         </el-table-column>
-<!--        <el-table-column align="left" label="入职日期" prop="dateofentry" width="120" />-->
-<!--        <el-table-column align="left" label="身份证号" prop="socialsecuritynumber" width="120" />-->
-<!--        <el-table-column align="left" label="出生日期" prop="dateofbirth" width="120" />-->
-<!--        <el-table-column align="left" label="生日月份" prop="birth_month" width="120">-->
-<!--            <template #default="scope">-->
-<!--            {{ filterDict(scope.row.birth_month,birth_monthOptions) }}-->
-<!--            </template>-->
-<!--        </el-table-column>-->
-<!--        <el-table-column align="left" label="籍贯" prop="origin" width="120" />-->
-<!--        <el-table-column align="left" label="户口所在地" prop="householdregistration" width="120" />-->
-<!--        <el-table-column align="left" label="身份证详细地址" prop="idaddress" width="120" />-->
-<!--        <el-table-column align="left" label="现住详细地址" prop="address" width="120" />-->
-<!--        <el-table-column align="left" label="民族" prop="ethnicgroup" width="120" />-->
-<!--        <el-table-column align="left" label="婚姻状况" prop="marriage" width="120">-->
-<!--            <template #default="scope">-->
-<!--            {{ filterDict(scope.row.marriage,marriageOptions) }}-->
-<!--            </template>-->
-<!--        </el-table-column>-->
-<!--        <el-table-column align="left" label="政治面貌" prop="politicalface" width="120">-->
-<!--            <template #default="scope">-->
-<!--            {{ filterDict(scope.row.politicalface,politicalfaceOptions) }}-->
-<!--            </template>-->
-<!--        </el-table-column>-->
-<!--        <el-table-column align="left" label="紧急联系人" prop="emergencycontacts" width="120" />-->
-<!--        <el-table-column align="left" label="紧急联系人电话" prop="ec_number" width="120" />-->
-<!--        <el-table-column align="left" label="手机号码" prop="number" width="120" />-->
-<!--        <el-table-column align="left" label="与联系人的关系" prop="ec_relationship" width="120" />-->
-<!--        <el-table-column align="left" label="学历" prop="degree" width="120">-->
-<!--            <template #default="scope">-->
-<!--            {{ filterDict(scope.row.degree,degreeOptions) }}-->
-<!--            </template>-->
-<!--        </el-table-column>-->
-<!--        <el-table-column align="left" label="毕业院校" prop="graduatingschool" width="120" />-->
-<!--        <el-table-column align="left" label="毕业时间" prop="graduationtime" width="120" />-->
-<!--        <el-table-column align="left" label="专业" prop="specialized" width="120" />-->
-<!--        <el-table-column align="left" label="特长" prop="specialty" width="120" />-->
-<!--        <el-table-column align="left" label="个人技能" prop="personalskills" width="120" />-->
-<!--        <el-table-column align="left" label="专业职称" prop="professionaltitle" width="120" />-->
-<!--        <el-table-column align="left" label="邮编" prop="zip" width="120" />-->
+        <!--        <el-table-column align="left" label="入职日期" prop="dateofentry" width="120" />-->
+        <!--        <el-table-column align="left" label="身份证号" prop="socialsecuritynumber" width="120" />-->
+        <!--        <el-table-column align="left" label="出生日期" prop="dateofbirth" width="120" />-->
+        <!--        <el-table-column align="left" label="生日月份" prop="birth_month" width="120">-->
+        <!--            <template #default="scope">-->
+        <!--            {{ filterDict(scope.row.birth_month,birth_monthOptions) }}-->
+        <!--            </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column align="left" label="籍贯" prop="origin" width="120" />-->
+        <!--        <el-table-column align="left" label="户口所在地" prop="householdregistration" width="120" />-->
+        <!--        <el-table-column align="left" label="身份证详细地址" prop="idaddress" width="120" />-->
+        <!--        <el-table-column align="left" label="现住详细地址" prop="address" width="120" />-->
+        <!--        <el-table-column align="left" label="民族" prop="ethnicgroup" width="120" />-->
+        <!--        <el-table-column align="left" label="婚姻状况" prop="marriage" width="120">-->
+        <!--            <template #default="scope">-->
+        <!--            {{ filterDict(scope.row.marriage,marriageOptions) }}-->
+        <!--            </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column align="left" label="政治面貌" prop="politicalface" width="120">-->
+        <!--            <template #default="scope">-->
+        <!--            {{ filterDict(scope.row.politicalface,politicalfaceOptions) }}-->
+        <!--            </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column align="left" label="紧急联系人" prop="emergencycontacts" width="120" />-->
+        <!--        <el-table-column align="left" label="紧急联系人电话" prop="ec_number" width="120" />-->
+        <!--        <el-table-column align="left" label="手机号码" prop="number" width="120" />-->
+        <!--        <el-table-column align="left" label="与联系人的关系" prop="ec_relationship" width="120" />-->
+        <!--        <el-table-column align="left" label="学历" prop="degree" width="120">-->
+        <!--            <template #default="scope">-->
+        <!--            {{ filterDict(scope.row.degree,degreeOptions) }}-->
+        <!--            </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column align="left" label="毕业院校" prop="graduatingschool" width="120" />-->
+        <!--        <el-table-column align="left" label="毕业时间" prop="graduationtime" width="120" />-->
+        <!--        <el-table-column align="left" label="专业" prop="specialized" width="120" />-->
+        <!--        <el-table-column align="left" label="特长" prop="specialty" width="120" />-->
+        <!--        <el-table-column align="left" label="个人技能" prop="personalskills" width="120" />-->
+        <!--        <el-table-column align="left" label="专业职称" prop="professionaltitle" width="120" />-->
+        <!--        <el-table-column align="left" label="邮编" prop="zip" width="120" />-->
         <el-table-column align="center" label="部门经理" prop="departmentmanager" width="120">
-            <template #default="scope">
+          <template #default="scope">
             {{ filterDict(scope.row.departmentmanager,departmentmanagerOptions) }}
-            </template>
+          </template>
         </el-table-column>
         <el-table-column align="center" label="社保状态" prop="socialsecurity" width="120">
-            <template #default="scope">
+          <template #default="scope">
             {{ filterDict(scope.row.socialsecurity,socialsecurityOptions) }}
-            </template>
+          </template>
         </el-table-column>
         <el-table-column align="left" label="按钮组" width="150px">
-            <template #default="scope">
-              <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructuiFunc(scope.row)">详情-变更</el-button>
-              <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
-            </template>
+          <template #default="scope">
+            <el-button type="text" icon="edit" size="small" class="table-button" @click="updateEmployeeStructuiFunc(scope.row)">详情-变更</el-button>
+            <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
+          </template>
         </el-table-column>
 
-        </el-table>
-        <div class="gva-pagination">
-            <el-pagination
+      </el-table>
+      <div class="gva-pagination">
+        <el-pagination
             layout="total, sizes, prev, pager, next, jumper"
             :current-page="page"
             :page-size="pageSize"
@@ -271,13 +271,13 @@
             :total="total"
             @current-change="handleCurrentChange"
             @size-change="handleSizeChange"
-            />
-        </div>
+        />
+      </div>
     </div>
     <!--    Dialog对话框-->
     <!--    :inline="true"数据并列-->
     <el-dialog v-model="dialogFormVisible" :before-close="closeDialog" title="详情-变更" width="80%" center>
-<!--      设置数据距离左侧宽度label-width="120px"-->
+      <!--      设置数据距离左侧宽度label-width="120px"-->
       <el-form :inline="true" :model="formData" label-position="right" label-width="120px">
         <el-form-item label="工号:">
           <el-input v-model.number="formData.worknumber" clearable placeholder="请输入" style="width: 220px"/>
@@ -391,39 +391,39 @@
           </el-select>
         </el-form-item>
 
-<!--        预览图-->
+        <!--        预览图-->
         <div class="gva-table-box">
 
-<!--          头像加载代替图像加载demo-->
-<!--          <div-->
-<!--              class="user-headpic-update"-->
-<!--              :style="{-->
-<!--                'background-image': `url(${-->
-<!--                  userStore.userInfo.headerImg &&-->
-<!--                  userStore.userInfo.headerImg.slice(0, 4) !== 'http'-->
-<!--                    ? path + userStore.userInfo.headerImg-->
-<!--                    : userStore.userInfo.headerImg-->
-<!--                })`,-->
-<!--                'background-repeat': 'no-repeat',-->
-<!--                'background-size': 'cover',-->
-<!--              }"-->
-<!--          >-->
-<!--              <span class="update" @click="openChooseImg">-->
-<!--                <el-icon>-->
-<!--                  <edit />-->
-<!--                </el-icon>-->
-<!--                重新上传</span>-->
-<!--          </div>-->
+          <!--          头像加载代替图像加载demo-->
+          <!--          <div-->
+          <!--              class="user-headpic-update"-->
+          <!--              :style="{-->
+          <!--                'background-image': `url(${-->
+          <!--                  userStore.userInfo.headerImg &&-->
+          <!--                  userStore.userInfo.headerImg.slice(0, 4) !== 'http'-->
+          <!--                    ? path + userStore.userInfo.headerImg-->
+          <!--                    : userStore.userInfo.headerImg-->
+          <!--                })`,-->
+          <!--                'background-repeat': 'no-repeat',-->
+          <!--                'background-size': 'cover',-->
+          <!--              }"-->
+          <!--          >-->
+          <!--              <span class="update" @click="openChooseImg">-->
+          <!--                <el-icon>-->
+          <!--                  <edit />-->
+          <!--                </el-icon>-->
+          <!--                重新上传</span>-->
+          <!--          </div>-->
 
-<!--          图像加载-->
+          <!--          图像加载-->
 
           <el-form-item label="预览：" label-width="80px">
-<!--            备用1给李总展示用-->
-<!--            <div style="display:inline-block" @click="openHeaderChange">-->
-<!--              <img style="width: 270px; height: 360px" v-if="userInfo.headerImg" class="header-img-box" :src="(userInfo.headerImg && userInfo.headerImg.slice(0, 4) !== 'http')?path+userInfo.headerImg:userInfo.headerImg" />-->
-<!--              <div v-else class="header-img-box">从媒体库选择</div>-->
-<!--              <ChooseImg ref="chooseImg" :target="userInfo" :target-key="`headerImg`" />-->
-<!--            </div>-->
+            <!--            备用1给李总展示用-->
+            <!--            <div style="display:inline-block" @click="openHeaderChange">-->
+            <!--              <img style="width: 270px; height: 360px" v-if="userInfo.headerImg" class="header-img-box" :src="(userInfo.headerImg && userInfo.headerImg.slice(0, 4) !== 'http')?path+userInfo.headerImg:userInfo.headerImg" />-->
+            <!--              <div v-else class="header-img-box">从媒体库选择</div>-->
+            <!--              <ChooseImg ref="chooseImg" :target="userInfo" :target-key="`headerImg`" />-->
+            <!--            </div>-->
 
             <!--            自己修改用-->
             <div style="display:inline-block" @click="openHeaderChange">
@@ -434,7 +434,7 @@
           </el-form-item>
 
 
-<!--          创建一个表格用于存储员工的照片-->
+          <!--          创建一个表格用于存储员工的照片-->
           <div class="gva-table-box">
             <el-table :data="假数据" style="width: 100%">
               <el-table-column
@@ -508,38 +508,38 @@ const departmentmanagerOptions = ref([])
 const socialsecurityOptions = ref([])
 const departmentOptions = ref([])
 const formData = ref({
-        worknumber: 0,
-        name: '',
-        age: 0,
-        sex: undefined,
-        department: undefined,
-        job: undefined,
-        dateofentry: new Date(),
-        socialsecuritynumber: '',
-        dateofbirth: new Date(),
-        birth_month: undefined,
-        origin: '',
-        householdregistration: '',
-        idaddress: '',
-        address: '',
-        ethnicgroup: '',
-        marriage: undefined,
-        politicalface: undefined,
-        emergencycontacts: '',
-        ec_number: 0,
-        number: 0,
-        ec_relationship: '',
-        degree: undefined,
-        graduatingschool: '',
-        graduationtime: new Date(),
-        specialized: '',
-        specialty: '',
-        personalskills: '',
-        professionaltitle: '',
-        zip: 0,
-        departmentmanager: undefined,
-        socialsecurity: undefined,
-        })
+  worknumber: 0,
+  name: '',
+  age: 0,
+  sex: undefined,
+  department: undefined,
+  job: undefined,
+  dateofentry: new Date(),
+  socialsecuritynumber: '',
+  dateofbirth: new Date(),
+  birth_month: undefined,
+  origin: '',
+  householdregistration: '',
+  idaddress: '',
+  address: '',
+  ethnicgroup: '',
+  marriage: undefined,
+  politicalface: undefined,
+  emergencycontacts: '',
+  ec_number: 0,
+  number: 0,
+  ec_relationship: '',
+  degree: undefined,
+  graduatingschool: '',
+  graduationtime: new Date(),
+  specialized: '',
+  specialty: '',
+  personalskills: '',
+  professionaltitle: '',
+  zip: 0,
+  departmentmanager: undefined,
+  socialsecurity: undefined,
+})
 
 // =========== 表格控制部分 ===========
 const page = ref(1)
@@ -559,7 +559,7 @@ const onSubmit = () => {
   page.value = 1
   pageSize.value = 10
   if (searchInfo.value.age === ""){
-      searchInfo.value.age=null
+    searchInfo.value.age=null
   }
   getTableData()
 }
@@ -593,16 +593,16 @@ const getTableData = async() => {
 
 // 获取需要的字典 可能为空 按需保留
 const setOptions = async () =>{
-    departmentmanagerOptions.value = await getDictFunc('departmentmanager')
-    genderOptions.value = await getDictFunc('gender')
-    jobOptions.value = await getDictFunc('job')
-    birth_monthOptions.value = await getDictFunc('birth_month')
-    marriageOptions.value = await getDictFunc('marriage')
-    politicalfaceOptions.value = await getDictFunc('politicalface')
-    degreeOptions.value = await getDictFunc('degree')
-    departmentmanagerOptions.value = await getDictFunc('departmentmanager')
-    socialsecurityOptions.value = await getDictFunc('socialsecurity')
-    departmentOptions.value = await getDictFunc('department')
+  departmentmanagerOptions.value = await getDictFunc('departmentmanager')
+  genderOptions.value = await getDictFunc('gender')
+  jobOptions.value = await getDictFunc('job')
+  birth_monthOptions.value = await getDictFunc('birth_month')
+  marriageOptions.value = await getDictFunc('marriage')
+  politicalfaceOptions.value = await getDictFunc('politicalface')
+  degreeOptions.value = await getDictFunc('degree')
+  departmentmanagerOptions.value = await getDictFunc('departmentmanager')
+  socialsecurityOptions.value = await getDictFunc('socialsecurity')
+  departmentOptions.value = await getDictFunc('department')
 }
 
 // 获取需要的字典 可能为空 按需保留
@@ -613,19 +613,19 @@ setOptions()
 const multipleSelection = ref([])
 // 多选
 const handleSelectionChange = (val) => {
-    multipleSelection.value = val
+  multipleSelection.value = val
 }
 
 // 删除行
 const deleteRow = (row) => {
-    ElMessageBox.confirm('确定要删除吗?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-    }).then(() => {
-            deleteEmployeeStructuiFunc(row)
-        })
-    }
+  ElMessageBox.confirm('确定要删除吗?', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    deleteEmployeeStructuiFunc(row)
+  })
+}
 
 
 // 批量删除控制标记
@@ -633,59 +633,59 @@ const deleteVisible = ref(false)
 
 // 多选删除
 const onDelete = async() => {
-      const ids = []
-      if (multipleSelection.value.length === 0) {
-        ElMessage({
-          type: 'warning',
-          message: '请选择要删除的数据'
-        })
-        return
-      }
-      multipleSelection.value &&
-        multipleSelection.value.map(item => {
-          ids.push(item.ID)
-        })
-      const res = await deleteEmployeeStructuiByIds({ ids })
-      if (res.code === 0) {
-        ElMessage({
-          type: 'success',
-          message: '删除成功'
-        })
-        if (tableData.value.length === ids.length && page.value > 1) {
-          page.value--
-        }
-        deleteVisible.value = false
-        getTableData()
-      }
+  const ids = []
+  if (multipleSelection.value.length === 0) {
+    ElMessage({
+      type: 'warning',
+      message: '请选择要删除的数据'
+    })
+    return
+  }
+  multipleSelection.value &&
+  multipleSelection.value.map(item => {
+    ids.push(item.ID)
+  })
+  const res = await deleteEmployeeStructuiByIds({ ids })
+  if (res.code === 0) {
+    ElMessage({
+      type: 'success',
+      message: '删除成功'
+    })
+    if (tableData.value.length === ids.length && page.value > 1) {
+      page.value--
     }
+    deleteVisible.value = false
+    getTableData()
+  }
+}
 
 // 行为控制标记（弹窗内部需要增还是改）
 const type = ref('')
 
 // 更新行
 const updateEmployeeStructuiFunc = async(row) => {
-    const res = await findEmployeeStructui({ ID: row.ID })
-    type.value = 'update'
-    if (res.code === 0) {
-        formData.value = res.data.reemployeeStructui
-        dialogFormVisible.value = true
-    }
+  const res = await findEmployeeStructui({ ID: row.ID })
+  type.value = 'update'
+  if (res.code === 0) {
+    formData.value = res.data.reemployeeStructui
+    dialogFormVisible.value = true
+  }
 }
 
 
 // 删除行
 const deleteEmployeeStructuiFunc = async (row) => {
-    const res = await deleteEmployeeStructui({ ID: row.ID })
-    if (res.code === 0) {
-        ElMessage({
-                type: 'success',
-                message: '删除成功'
-            })
-            if (tableData.value.length === 1 && page.value > 1) {
-            page.value--
-        }
-        getTableData()
+  const res = await deleteEmployeeStructui({ ID: row.ID })
+  if (res.code === 0) {
+    ElMessage({
+      type: 'success',
+      message: '删除成功'
+    })
+    if (tableData.value.length === 1 && page.value > 1) {
+      page.value--
     }
+    getTableData()
+  }
 }
 
 // 弹窗控制标记
@@ -693,71 +693,71 @@ const dialogFormVisible = ref(false)
 
 // 打开弹窗
 const openDialog = () => {
-    type.value = 'create'
-    dialogFormVisible.value = true
+  type.value = 'create'
+  dialogFormVisible.value = true
 }
 
 // 关闭弹窗
 const closeDialog = () => {
-    dialogFormVisible.value = false
-    formData.value = {
-        worknumber: 0,
-        name: '',
-        age: 0,
-        sex: undefined,
-        department: undefined,
-        job: undefined,
-        dateofentry: new Date(),
-        socialsecuritynumber: '',
-        dateofbirth: new Date(),
-        birth_month: undefined,
-        origin: '',
-        householdregistration: '',
-        idaddress: '',
-        address: '',
-        ethnicgroup: '',
-        marriage: undefined,
-        politicalface: undefined,
-        emergencycontacts: '',
-        ec_number: 0,
-        number: 0,
-        ec_relationship: '',
-        degree: undefined,
-        graduatingschool: '',
-        graduationtime: new Date(),
-        specialized: '',
-        specialty: '',
-        personalskills: '',
-        professionaltitle: '',
-        zip: 0,
-        departmentmanager: undefined,
-        socialsecurity: undefined,
-        employeeImg: '',
+  dialogFormVisible.value = false
+  formData.value = {
+    worknumber: 0,
+    name: '',
+    age: 0,
+    sex: undefined,
+    department: undefined,
+    job: undefined,
+    dateofentry: new Date(),
+    socialsecuritynumber: '',
+    dateofbirth: new Date(),
+    birth_month: undefined,
+    origin: '',
+    householdregistration: '',
+    idaddress: '',
+    address: '',
+    ethnicgroup: '',
+    marriage: undefined,
+    politicalface: undefined,
+    emergencycontacts: '',
+    ec_number: 0,
+    number: 0,
+    ec_relationship: '',
+    degree: undefined,
+    graduatingschool: '',
+    graduationtime: new Date(),
+    specialized: '',
+    specialty: '',
+    personalskills: '',
+    professionaltitle: '',
+    zip: 0,
+    departmentmanager: undefined,
+    socialsecurity: undefined,
+    employeeImg: '',
 
-        }
+  }
 }
 // 弹窗确定
 const enterDialog = async () => {
-      let res
-      switch (type.value) {
-        case 'create':
-          res = await createEmployeeStructui(formData.value)
-          break
-        case 'update':
-          res = await updateEmployeeStructui(formData.value)
-          break
-        default:
-          res = await createEmployeeStructui(formData.value)
-          break
-      }``
-      if (res.code === 0) {
-        ElMessage({
-          type: 'success',
-          message: '创建/更改成功'
-        })
-        closeDialog()
-        getTableData()
-      }
+  let res
+  switch (type.value) {
+    case 'create':
+      res = await createEmployeeStructui(formData.value)
+      break
+    case 'update':
+      res = await updateEmployeeStructui(formData.value)
+      break
+    default:
+      res = await createEmployeeStructui(formData.value)
+      break
+  }``
+  if (res.code === 0) {
+    ElMessage({
+      type: 'success',
+      message: '创建/更改成功'
+    })
+    closeDialog()
+    getTableData()
+  }
 }
 
 //头像加载代替图像加载demo
@@ -831,13 +831,13 @@ const path = ref(import.meta.env.VITE_BASE_API)
 <style lang="scss">
 .user-dialog {
   .header-img-box {
-  width: 200px;
-  height: 200px;
-  border: 1px dashed #ccc;
-  border-radius: 20px;
-  text-align: center;
-  line-height: 200px;
-  cursor: pointer;
+    width: 200px;
+    height: 200px;
+    border: 1px dashed #ccc;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 200px;
+    cursor: pointer;
   }
   .avatar-uploader .el-upload:hover {
     border-color: #409eff;

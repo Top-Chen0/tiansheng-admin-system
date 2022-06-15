@@ -12,6 +12,13 @@ import run from '@/core/gin-vue-admin.js'
 import auth from '@/directive/auth'
 import { store } from '@/pinia'
 import App from './App.vue'
+// 引入外部字体
+import './common/font.scss'
+
+// 引入bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min'
+
 const app = createApp(App)
 app.config.productionTip = false
 

@@ -209,3 +209,205 @@
 .el-select .el-input .el-select__caret.el-icon {
     height: 38px;
 }
+
+//--------------------以下开始
+////头部logo和字体
+//    //页面头部样式
+//.chen-test-box {
+//    width: 100%;
+//    height: 80px;
+//    //padding: 500px;
+//    background-color: #377ebb;
+//    //border-radius: 2px;
+//}
+////logo样式
+//.demo-image {
+//    //text-align: center;
+//    padding:  10px 30%;
+//    //display: inline-block;
+//    //height: 0px;
+//    //box-sizing: border-box;
+//    //vertical-align: top;
+//    //float: left;
+//}
+////字体样式
+//.chen-test-title {
+//    padding:  2px 35%;
+//    //字体大小
+//    font-size: 60px;
+//    //字体粗细
+//    font-weight: 500;
+//    color: #FFFFFF;
+//    //引入外部字体
+//    font-family: 'QingNiaoHuaGuangXingKai';
+//    float: left;
+//    margin-top: -90px;
+//    width: 150%;
+//}
+//----------------------以上开始
+
+//头部logo和字体
+.chen-test-title {
+    margin-top: 0px;
+    position: relative;
+    //margin: 0 auto;
+    width: 100%;
+    height: 80px;
+    background-color: #377ebb;
+    text-align: center;
+    //字体大小
+    font-size: 60px;
+    //字体粗细
+    font-weight: 500;
+    color: #FFFFFF;
+    //引入外部字体
+    font-family: 'QingNiaoHuaGuangXingKai';
+}
+//横线
+.chen-line0{
+    float:right;
+    width: 100%;
+    height: 1px;
+    margin-top: -0.5em;
+    background:#d4c4c4;
+    position: relative;
+    text-align: center;
+}
+/* 竖线 */
+.chen-line1{
+    float: left;
+    width: 0.1em;
+    height: 2.5em;
+    margin-right: 1em;
+    margin-left: 3.5em;
+    background:#f3f3f3;
+}
+//给一个高为1像素的盒子，盒子宽度根据要求设定，再设置盒子颜色，排列方式为相对定位，
+// 盒子里设置文字给左右padding，并进行绝对定位到中间即可实现
+.tableTitle {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 5px;
+    background-color: #0a3d98;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(53, 55, 85);
+}
+.midText {
+    position: absolute;
+    left: 50%;
+    background-color: #ffffff;
+    padding: 0 15px;
+    transform: translateX(-50%) translateY(-50%);
+}
+//第二条横线
+//给一个高为.1像素的盒子，盒子宽度根据要求设定，再设置盒子颜色，排列方式为相对定位，
+// 盒子里设置文字给左右padding，并进行绝对定位到中间即可实现
+.tableTitle0 {
+    position: relative;
+    margin-top: 0px;
+    //margin: 0 auto;
+    width: 100%;
+    height: 5px;
+    background-color: #0a3d98;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(53, 55, 85);
+}
+.midText0 {
+    position: absolute;
+    left: 50%;
+    background-color: #ffffff;
+    padding: 0 15px;
+    transform: translateX(-50%) translateY(-50%);
+}
+//全局输入框点击发光效果
+input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+//第一个标题框及标题
+//给一个高为.1像素的盒子，盒子宽度根据要求设定，再设置盒子颜色，排列方式为相对定位，
+// 盒子里设置文字给左右padding，并进行绝对定位到中间即可实现
+.tableTitle1 {
+    position: relative;
+    margin-top: 70px;
+    //margin: 0 auto;
+    width: 100%;
+    height: 5px;
+    background-color: #e0e8fc;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+.midText1 {
+    position: absolute;
+    left: 50%;
+    background-color: #ffffff;
+    padding: 0 20px;
+    //边框绝对定位transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
+    transform: translateX(-50%) translateY(-50%);
+    //边框圆角
+    border-radius: 5px;
+    //字体大小
+    font-size: 30px;
+    //字体粗细
+    font-weight: 500;
+}
+.tableTitle2 {
+    position: relative;
+    margin-top: 35px;
+    //margin: 0 auto;
+    width: 100%;
+    height: 5px;
+    background-color: #0a3d98;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+.midText2 {
+    position: absolute;
+    left: 50%;
+    background-color: #ffffff;
+    padding: 0 20px;
+    //边框绝对定位transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
+    transform: translateX(-50%) translateY(-50%);
+    //边框圆角
+    border-radius: 5px;
+    //字体大小
+    font-size: 30px;
+    //字体粗细
+    font-weight: 500;
+}
+
+//以下暂未使用
+/*最大屏幕分辨率为1280px*/
+@media screen and (max-width:1280px){
+    .content{
+        width:20%
+    }
+}
+/*最小屏幕分辨率为1280px且最大为1440px*/
+@media (min-width: 1280px) and (max-width:1440px){
+    .content{
+        width:40%
+    }
+}
+/*最小屏幕分辨率为1440px且最大为1680px*/
+@media (min-width: 1440px) and (max-width:1680px){
+    .content{
+        width:60%
+    }
+}
+/*最小屏幕分辨率为1920px*/
+@media screen and (min-width:1920px){
+    .content{
+        width:100%
+    }
+}
+
+
+
