@@ -5,7 +5,7 @@
     <!--    注意：chen-test-box已经被注解掉，整体无效-->
     <div class="chen-test-box">
       <div class="chen-test-title" v-for="fit in fits" :key="fit" >
-        <el-image style="width: 60px; height: 60px;" :src="url" :fit="fit" />
+        <el-image style="width: 50px; height: 50px;" :src="url" :fit="fit" />
         河南天盛景观规划设计院
         <!--      <span class="chen-test-title">河南天盛景观规划设计院</span>-->
       </div>
@@ -16,8 +16,16 @@
     </div>
     <!--    员工信息录入页面-->
     <div class="example-block" style="margin-top: 25px;border:5px solid rgb(55,126,187);">
-      <span class="example-demonstration; el-cascader-panel; input:focus"></span>
-
+      <div class="example-block0">
+        <span class="example-demonstration; el-cascader-panel; input:focus"></span>
+        <!--第一个标题框-->
+        <img
+            class="css-img9"
+            src="@/image/12.png"
+            alt="元素加载失败"
+            style="position: relative; left: 0px; top: 0%"
+        >
+      </div>
     </div>
 
 
@@ -38,7 +46,7 @@
 <script lang="ts" setup>
 const fits = [ 'cover' ]
 const url =
-    'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+    '/src/assets/logo.png'
 
 // 页面下拉栏Cascader 级联选择器
 import { ref } from 'vue'
@@ -342,6 +350,14 @@ const options = [
   /*margin-left:124px;*/
   /*margin-right:20px;*/
 }
+.example-block0{
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  width: 90%;
+  background: #f9c449;
+}
+
 .example-demonstration {
   margin: 1rem;
 }
@@ -349,7 +365,10 @@ const options = [
 .el-cascader-panel{
   background: #f9c449 !important;
 }
-
+.css-img9{
+  width: 153px;
+  height: 90px;
+}
 
 
 
