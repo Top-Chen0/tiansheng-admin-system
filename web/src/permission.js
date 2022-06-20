@@ -29,6 +29,9 @@ async function handleKeepAlive(to) {
   if (to.name === 'EmployeeModificationhr') {
     to.matched = [to.matched[to.matched.length - 1]]
   }
+  if (to.name === 'orderLnformationhr') {
+    to.matched = [to.matched[to.matched.length - 1]]
+  }
 
   if (to.matched && to.matched.length > 2) {
     for (let i = 1; i < to.matched.length; i++) {

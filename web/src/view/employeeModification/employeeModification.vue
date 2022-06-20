@@ -563,7 +563,7 @@
           class="css-img24"
           src="@/image/24.png"
           alt="元素加载失败"
-          style="position: relative; left: 0px; top: 0%"
+          style="position: relative; left: 60px; top: 0%"
       >
       <!--        取消按钮样式-->
       <img

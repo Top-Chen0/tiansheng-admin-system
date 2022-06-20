@@ -1,460 +1,600 @@
+<!--员工信息变更页面-->
 <template>
-  <div>
-    <div class="gva-search-box">
-      <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
-        <el-form-item>
-          <el-button size="small" type="primary" icon="search" @click="onSubmit">查询</el-button>
-          <el-button size="small" icon="refresh" @click="onReset">重置</el-button>
-        </el-form-item>
-      </el-form>
+  <!--  外层容器设置了高度和overflow实现滚动-->
+  <div style="height: 1000px; overflow: scroll">
+    <!--    注意：chen-test-box已经被注解掉，整体无效-->
+    <div class="chen-test-box">
+      <div class="chen-test-title" v-for="fit in fits" :key="fit" >
+        <el-image style="width: 50px; height: 50px;" :src="url" :fit="fit" />
+        河南天盛景观规划设计院
+        <!--      <span class="chen-test-title">河南天盛景观规划设计院</span>-->
+      </div>
     </div>
-    <div class="gva-table-box">
-        <div class="gva-btn-list">
-            <el-button size="small" type="primary" icon="plus" @click="openDialog">新增</el-button>
-            <el-popover v-model:visible="deleteVisible" placement="top" width="160">
-            <p>确定要删除吗？</p>
-            <div style="text-align: right; margin-top: 8px;">
-                <el-button size="small" type="text" @click="deleteVisible = false">取消</el-button>
-                <el-button size="small" type="primary" @click="onDelete">确定</el-button>
-            </div>
-            <template #reference>
-                <el-button icon="delete" size="small" style="margin-left: 10px;" :disabled="!multipleSelection.length" @click="deleteVisible = true">删除</el-button>
-            </template>
-            </el-popover>
-        </div>
-        <el-table
-        ref="multipleTable"
-        style="width: 100%"
-        tooltip-effect="dark"
-        :data="tableData"
-        row-key="ID"
-        @selection-change="handleSelectionChange"
+    <!--    第一个标题框员工信息变更-->
+    <div>
+      <div class="tableTitle2"><span class="midText2" style="font-family: QingNiaoHuaGuangXingKai; background-color: #377ebb">详单信息</span></div>
+    </div>
+    <!--    员工信息变更页面-->
+    <div class="example-block" style="margin-top: 25px">
+      <div class="example-block0">
+        <span class="example-demonstration; el-cascader-panel; input:focus"></span>
+        <!--1-1小标题-->
+        <img
+            class="css-img31"
+            src="@/image/31.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: 0%"
         >
-        <el-table-column type="selection" width="55" />
-        <el-table-column align="left" label="日期" width="180">
-            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>
-        </el-table-column>
-        <el-table-column align="left" label="工号" prop="worknumber" width="120" />
-        <el-table-column align="left" label="姓名" prop="name" width="120" />
-        <el-table-column align="left" label="年龄" prop="age" width="120" />
-        <el-table-column align="left" label="性别" prop="sex" width="120" />
-        <el-table-column align="left" label="部门" prop="department" width="120" />
-        <el-table-column align="left" label="岗位名称" prop="job" width="120" />
-        <el-table-column align="left" label="入职日期" prop="dateofentry" width="120" />
-        <el-table-column align="left" label="身份证号" prop="socialsecuritynumber" width="120" />
-        <el-table-column align="left" label="出生日期" prop="dateofbirth" width="120" />
-        <el-table-column align="left" label="生日月份" prop="birthMonth" width="120" />
-        <el-table-column align="left" label="籍贯" prop="origin" width="120" />
-        <el-table-column align="left" label="户口所在地" prop="householdregistration" width="120" />
-        <el-table-column align="left" label="身份证详细地址" prop="idaddress" width="120" />
-        <el-table-column align="left" label="现住详细地址" prop="address" width="120" />
-        <el-table-column align="left" label="民族" prop="ethnicgroup" width="120" />
-        <el-table-column align="left" label="婚姻状况" prop="marriage" width="120" />
-        <el-table-column align="left" label="政治面貌" prop="politicalface" width="120" />
-        <el-table-column align="left" label="紧急联系人" prop="emergencycontacts" width="120" />
-        <el-table-column align="left" label="紧急联系人电话" prop="ecNumber" width="120" />
-        <el-table-column align="left" label="手机号码" prop="number" width="120" />
-        <el-table-column align="left" label="与联系人的关系" prop="ecRelationship" width="120" />
-        <el-table-column align="left" label="学历" prop="degree" width="120" />
-        <el-table-column align="left" label="毕业院校" prop="graduatingschool" width="120" />
-        <el-table-column align="left" label="毕业时间" prop="graduationtime" width="120" />
-        <el-table-column align="left" label="专业" prop="specialized" width="120" />
-        <el-table-column align="left" label="特长" prop="specialty" width="120" />
-        <el-table-column align="left" label="个人技能" prop="personalskills" width="120" />
-        <el-table-column align="left" label="专业职称" prop="professionaltitle" width="120" />
-        <el-table-column align="left" label="邮编" prop="zip" width="120" />
-        <el-table-column align="left" label="部门经理" prop="departmentmanager" width="120" />
-        <el-table-column align="left" label="社保状态" prop="socialsecurity" width="120" />
-        <el-table-column align="left" label="员工照片" prop="employeeImg" width="120" />
-        <el-table-column align="left" label="按钮组">
-            <template #default="scope">
-            <el-button type="text" icon="edit" size="small" class="table-button" @click="updateOrderLnformationFunc(scope.row)">变更</el-button>
-            <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
-            </template>
-        </el-table-column>
-        </el-table>
-        <div class="gva-pagination">
-            <el-pagination
-            layout="total, sizes, prev, pager, next, jumper"
-            :current-page="page"
-            :page-size="pageSize"
-            :page-sizes="[10, 30, 50, 100]"
-            :total="total"
-            @current-change="handleCurrentChange"
-            @size-change="handleSizeChange"
-            />
-        </div>
+        <!--1-2小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <!--1-3小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <!--1-4小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <!--1-5小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <!--1-6小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <!--1-7小标题-->
+        <img
+            class="css-img32"
+            src="@/image/32.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -5%"
+        >
+        <br>
+        <!--1-2-1小标题-->
+        <img
+            class="css-img33"
+            src="@/image/33.png"
+            alt="元素加载失败"
+            style="position: relative; left: 332px; top: -15%"
+        >
+        <!--1-2-2小标题-->
+        <img
+            class="css-img33"
+            src="@/image/33.png"
+            alt="元素加载失败"
+            style="position: relative; left: 280px; top: -15%"
+        >
+        <br>
+        <!--2-1小标题-->
+        <img
+            class="css-img31"
+            src="@/image/31.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <!--2-2小标题-->
+        <img
+            class="css-img34"
+            src="@/image/34.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <!--2-3小标题-->
+        <img
+            class="css-img34"
+            src="@/image/34.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <!--2-4小标题-->
+        <img
+            class="css-img34"
+            src="@/image/34.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <br>
+        <!--3-1小标题-->
+        <img
+            class="css-img31"
+            src="@/image/31.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <!--3-2小标题-->
+        <img
+            class="css-img35"
+            src="@/image/35.png"
+            alt="元素加载失败"
+            style="position: relative; left: 165px; top: -16%"
+        >
+        <br>
+        <!--4-1小标题-->
+        <img
+            class="css-img31"
+            src="@/image/31.png"
+            alt="元素加载失败"
+            style="position: relative; left: 170px; top: -16%"
+        >
+        <!--4-2小标题-->
+        <img
+            class="css-img35"
+            src="@/image/35.png"
+            alt="元素加载失败"
+            style="position: relative; left: 165px; top: -16%"
+        >
+      </div>
     </div>
-    <el-dialog v-model="dialogFormVisible" :before-close="closeDialog" title="弹窗操作">
-      <el-form :model="formData" label-position="right" label-width="80px">
-        <el-form-item label="工号:">
-          <el-input v-model.number="formData.worknumber" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="姓名:">
-          <el-input v-model="formData.name" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="年龄:">
-          <el-input v-model.number="formData.age" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="性别:">
-          <el-input v-model.number="formData.sex" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="部门:">
-          <el-input v-model.number="formData.department" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="岗位名称:">
-          <el-input v-model.number="formData.job" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="入职日期:">
-          <el-date-picker v-model="formData.dateofentry" type="date" style="width:100%" placeholder="选择日期" clearable />
-        </el-form-item>
-        <el-form-item label="身份证号:">
-          <el-input v-model="formData.socialsecuritynumber" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="出生日期:">
-          <el-date-picker v-model="formData.dateofbirth" type="date" style="width:100%" placeholder="选择日期" clearable />
-        </el-form-item>
-        <el-form-item label="生日月份:">
-          <el-input v-model.number="formData.birthMonth" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="籍贯:">
-          <el-input v-model="formData.origin" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="户口所在地:">
-          <el-input v-model="formData.householdregistration" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="身份证详细地址:">
-          <el-input v-model="formData.idaddress" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="现住详细地址:">
-          <el-input v-model="formData.address" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="民族:">
-          <el-input v-model="formData.ethnicgroup" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="婚姻状况:">
-          <el-input v-model.number="formData.marriage" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="政治面貌:">
-          <el-input v-model.number="formData.politicalface" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="紧急联系人:">
-          <el-input v-model="formData.emergencycontacts" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="紧急联系人电话:">
-          <el-input v-model.number="formData.ecNumber" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="手机号码:">
-          <el-input v-model.number="formData.number" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="与联系人的关系:">
-          <el-input v-model="formData.ecRelationship" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="学历:">
-          <el-input v-model.number="formData.degree" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="毕业院校:">
-          <el-input v-model="formData.graduatingschool" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="毕业时间:">
-          <el-date-picker v-model="formData.graduationtime" type="date" style="width:100%" placeholder="选择日期" clearable />
-        </el-form-item>
-        <el-form-item label="专业:">
-          <el-input v-model="formData.specialized" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="特长:">
-          <el-input v-model="formData.specialty" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="个人技能:">
-          <el-input v-model="formData.personalskills" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="专业职称:">
-          <el-input v-model="formData.professionaltitle" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="邮编:">
-          <el-input v-model.number="formData.zip" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="部门经理:">
-          <el-input v-model.number="formData.departmentmanager" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="社保状态:">
-          <el-input v-model.number="formData.socialsecurity" clearable placeholder="请输入" />
-        </el-form-item>
-        <el-form-item label="员工照片:">
-          <el-input v-model="formData.employeeImg" clearable placeholder="请输入" />
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <div class="dialog-footer">
-          <el-button size="small" @click="closeDialog">取 消</el-button>
-          <el-button size="small" type="primary" @click="enterDialog">确 定</el-button>
-        </div>
-      </template>
-    </el-dialog>
+    <div class="example-block1">
+      <!--        添加按钮样式-->
+      <img
+          class="css-img36"
+          src="@/image/36.png"
+          alt="元素加载失败"
+          style="position: relative; left: 300px; top: -25%"
+      >
+      <!--        添加按钮样式-->
+      <img
+          class="css-img37"
+          src="@/image/37.png"
+          alt="元素加载失败"
+          style="position: relative; left: 600px; top: -20%"
+      >
+      <!--        添加按钮样式-->
+      <img
+          class="css-img36"
+          src="@/image/36.png"
+          alt="元素加载失败"
+          style="position: relative; left: 900px; top: -25%"
+      >
+    </div>
+    <!--    添加页面第二条横线-->
+    <div class="tableTitle0"><span class="midText0"></span></div>
+    <!--    表格-->
+    <div class="example-block" style="background: #e0e8fc;">
+      <div class="example-block0">
+        <!--表格-->
+        <img
+            class="css-img39"
+            src="@/image/39.png"
+            alt="元素加载失败"
+            style="position: relative; left: 0px; top: 0%"
+        >
+      </div>
+    </div>
+    <!--    添加页面第三条横线-->
+    <div class="tableTitle0"><span class="midText0"></span></div>
+    <div class="example-block1">
+      <!--        主页按钮样式-->
+      <img
+          class="css-img24"
+          src="@/image/24.png"
+          alt="元素加载失败"
+          style="position: relative; left: 60px; top: 0%"
+      >
+      <!--        上一页按钮样式-->
+      <img
+          class="css-img24"
+          src="@/image/24.png"
+          alt="元素加载失败"
+          style="position: relative; left: 60px; top: 0%"
+      >
+      <!--        下一页按钮样式-->
+      <img
+          class="css-img24"
+          src="@/image/24.png"
+          alt="元素加载失败"
+          style="position: relative; left: 60px; top: 0%"
+      >
+      <!--        取消按钮样式-->
+      <img
+          class="css-img24"
+          src="@/image/24.png"
+          alt="元素加载失败"
+          style="position: relative; left: 900px; top: 0%"
+      >
+      <!--        确定按钮样式-->
+      <img
+          class="css-img24"
+          src="@/image/24.png"
+          alt="元素加载失败"
+          style="position: relative; left: 900px; top: 0%"
+      >
+    </div>
+    <!--最底栏-->
+    <div style="width: 100%;height: 110px;background-color: #377ebb;margin-top: 10px;">
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'OrderLnformation'
-}
-</script>
+<!--图像加载-->
+<script lang="ts" setup>
+const fits = [ 'cover' ]
+const url =
+    '/src/assets/logo.png'
 
-<script setup>
-import {
-  createOrderLnformation,
-  deleteOrderLnformation,
-  deleteOrderLnformationByIds,
-  updateOrderLnformation,
-  findOrderLnformation,
-  getOrderLnformationList
-} from '@/api/orderLnformation'
-
-// 全量引入格式化工具 请按需保留
-import { getDictFunc, formatDate, formatBoolean, filterDict } from '@/utils/format'
-import { ElMessage, ElMessageBox } from 'element-plus'
+// 页面下拉栏Cascader 级联选择器
 import { ref } from 'vue'
 
-// 自动化生成的字典（可能为空）以及字段
-const formData = ref({
-        worknumber: 0,
-        name: '',
-        age: 0,
-        sex: 0,
-        department: 0,
-        job: 0,
-        dateofentry: new Date(),
-        socialsecuritynumber: '',
-        dateofbirth: new Date(),
-        birthMonth: 0,
-        origin: '',
-        householdregistration: '',
-        idaddress: '',
-        address: '',
-        ethnicgroup: '',
-        marriage: 0,
-        politicalface: 0,
-        emergencycontacts: '',
-        ecNumber: 0,
-        number: 0,
-        ecRelationship: '',
-        degree: 0,
-        graduatingschool: '',
-        graduationtime: new Date(),
-        specialized: '',
-        specialty: '',
-        personalskills: '',
-        professionaltitle: '',
-        zip: 0,
-        departmentmanager: 0,
-        socialsecurity: 0,
-        employeeImg: '',
-        })
+const value = ref([])
 
-// =========== 表格控制部分 ===========
-const page = ref(1)
-const total = ref(0)
-const pageSize = ref(10)
-const tableData = ref([])
-const searchInfo = ref({})
-
-// 重置
-const onReset = () => {
-  searchInfo.value = {}
+const props = {
+  expandTrigger: 'hover',
 }
 
-// 搜索
-const onSubmit = () => {
-  page.value = 1
-  pageSize.value = 10
-  getTableData()
+const handleChange = (value) => {
+  console.log(value)
 }
 
-// 分页
-const handleSizeChange = (val) => {
-  pageSize.value = val
-  getTableData()
-}
+const options = [
+  {
+    value: 'guide',
+    label: 'Guide',
+    children: [
+      {
+        value: 'disciplines',
+        label: 'Disciplines',
+        children: [
+          {
+            value: 'consistency',
+            label: 'Consistency',
+          },
+          {
+            value: 'feedback',
+            label: 'Feedback',
+          },
+          {
+            value: 'efficiency',
+            label: 'Efficiency',
+          },
+          {
+            value: 'controllability',
+            label: 'Controllability',
+          },
+        ],
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'side nav',
+            label: 'Side Navigation',
+          },
+          {
+            value: 'top nav',
+            label: 'Top Navigation',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'component',
+    label: 'Component',
+    children: [
+      {
+        value: 'basic',
+        label: 'Basic',
+        children: [
+          {
+            value: 'layout',
+            label: 'Layout',
+          },
+          {
+            value: 'color',
+            label: 'Color',
+          },
+          {
+            value: 'typography',
+            label: 'Typography',
+          },
+          {
+            value: 'icon',
+            label: 'Icon',
+          },
+          {
+            value: 'button',
+            label: 'Button',
+          },
+        ],
+      },
+      {
+        value: 'form',
+        label: 'Form',
+        children: [
+          {
+            value: 'radio',
+            label: 'Radio',
+          },
+          {
+            value: 'checkbox',
+            label: 'Checkbox',
+          },
+          {
+            value: 'input',
+            label: 'Input',
+          },
+          {
+            value: 'input-number',
+            label: 'InputNumber',
+          },
+          {
+            value: 'select',
+            label: 'Select',
+          },
+          {
+            value: 'cascader',
+            label: 'Cascader',
+          },
+          {
+            value: 'switch',
+            label: 'Switch',
+          },
+          {
+            value: 'slider',
+            label: 'Slider',
+          },
+          {
+            value: 'time-picker',
+            label: 'TimePicker',
+          },
+          {
+            value: 'date-picker',
+            label: 'DatePicker',
+          },
+          {
+            value: 'datetime-picker',
+            label: 'DateTimePicker',
+          },
+          {
+            value: 'upload',
+            label: 'Upload',
+          },
+          {
+            value: 'rate',
+            label: 'Rate',
+          },
+          {
+            value: 'form',
+            label: 'Form',
+          },
+        ],
+      },
+      {
+        value: 'data',
+        label: 'Data',
+        children: [
+          {
+            value: 'table',
+            label: 'Table',
+          },
+          {
+            value: 'tag',
+            label: 'Tag',
+          },
+          {
+            value: 'progress',
+            label: 'Progress',
+          },
+          {
+            value: 'tree',
+            label: 'Tree',
+          },
+          {
+            value: 'pagination',
+            label: 'Pagination',
+          },
+          {
+            value: 'badge',
+            label: 'Badge',
+          },
+        ],
+      },
+      {
+        value: 'notice',
+        label: 'Notice',
+        children: [
+          {
+            value: 'alert',
+            label: 'Alert',
+          },
+          {
+            value: 'loading',
+            label: 'Loading',
+          },
+          {
+            value: 'message',
+            label: 'Message',
+          },
+          {
+            value: 'message-box',
+            label: 'MessageBox',
+          },
+          {
+            value: 'notification',
+            label: 'Notification',
+          },
+        ],
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'menu',
+            label: 'Menu',
+          },
+          {
+            value: 'tabs',
+            label: 'Tabs',
+          },
+          {
+            value: 'breadcrumb',
+            label: 'Breadcrumb',
+          },
+          {
+            value: 'dropdown',
+            label: 'Dropdown',
+          },
+          {
+            value: 'steps',
+            label: 'Steps',
+          },
+        ],
+      },
+      {
+        value: 'others',
+        label: 'Others',
+        children: [
+          {
+            value: 'dialog',
+            label: 'Dialog',
+          },
+          {
+            value: 'tooltip',
+            label: 'Tooltip',
+          },
+          {
+            value: 'popover',
+            label: 'Popover',
+          },
+          {
+            value: 'card',
+            label: 'Card',
+          },
+          {
+            value: 'carousel',
+            label: 'Carousel',
+          },
+          {
+            value: 'collapse',
+            label: 'Collapse',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'resource',
+    label: 'Resource',
+    children: [
+      {
+        value: 'axure',
+        label: 'Axure Components',
+      },
+      {
+        value: 'sketch',
+        label: 'Sketch Templates',
+      },
+      {
+        value: 'docs',
+        label: 'Design Documentation',
+      },
+    ],
+  },
+]
 
-// 修改页面容量
-const handleCurrentChange = (val) => {
-  page.value = val
-  getTableData()
-}
-
-// 查询
-const getTableData = async() => {
-  const table = await getOrderLnformationList({ page: page.value, pageSize: pageSize.value, ...searchInfo.value })
-  if (table.code === 0) {
-    tableData.value = table.data.list
-    total.value = table.data.total
-    page.value = table.data.page
-    pageSize.value = table.data.pageSize
-  }
-}
-
-getTableData()
-
-// ============== 表格控制部分结束 ===============
-
-// 获取需要的字典 可能为空 按需保留
-const setOptions = async () =>{
-}
-
-// 获取需要的字典 可能为空 按需保留
-setOptions()
-
-
-// 多选数据
-const multipleSelection = ref([])
-// 多选
-const handleSelectionChange = (val) => {
-    multipleSelection.value = val
-}
-
-// 删除行
-const deleteRow = (row) => {
-    ElMessageBox.confirm('确定要删除吗?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-    }).then(() => {
-            deleteOrderLnformationFunc(row)
-        })
-    }
-
-
-// 批量删除控制标记
-const deleteVisible = ref(false)
-
-// 多选删除
-const onDelete = async() => {
-      const ids = []
-      if (multipleSelection.value.length === 0) {
-        ElMessage({
-          type: 'warning',
-          message: '请选择要删除的数据'
-        })
-        return
-      }
-      multipleSelection.value &&
-        multipleSelection.value.map(item => {
-          ids.push(item.ID)
-        })
-      const res = await deleteOrderLnformationByIds({ ids })
-      if (res.code === 0) {
-        ElMessage({
-          type: 'success',
-          message: '删除成功'
-        })
-        if (tableData.value.length === ids.length && page.value > 1) {
-          page.value--
-        }
-        deleteVisible.value = false
-        getTableData()
-      }
-    }
-
-// 行为控制标记（弹窗内部需要增还是改）
-const type = ref('')
-
-// 更新行
-const updateOrderLnformationFunc = async(row) => {
-    const res = await findOrderLnformation({ ID: row.ID })
-    type.value = 'update'
-    if (res.code === 0) {
-        formData.value = res.data.reorderLnformation
-        dialogFormVisible.value = true
-    }
-}
-
-
-// 删除行
-const deleteOrderLnformationFunc = async (row) => {
-    const res = await deleteOrderLnformation({ ID: row.ID })
-    if (res.code === 0) {
-        ElMessage({
-                type: 'success',
-                message: '删除成功'
-            })
-            if (tableData.value.length === 1 && page.value > 1) {
-            page.value--
-        }
-        getTableData()
-    }
-}
-
-// 弹窗控制标记
-const dialogFormVisible = ref(false)
-
-// 打开弹窗
-const openDialog = () => {
-    type.value = 'create'
-    dialogFormVisible.value = true
-}
-
-// 关闭弹窗
-const closeDialog = () => {
-    dialogFormVisible.value = false
-    formData.value = {
-        worknumber: 0,
-        name: '',
-        age: 0,
-        sex: 0,
-        department: 0,
-        job: 0,
-        dateofentry: new Date(),
-        socialsecuritynumber: '',
-        dateofbirth: new Date(),
-        birthMonth: 0,
-        origin: '',
-        householdregistration: '',
-        idaddress: '',
-        address: '',
-        ethnicgroup: '',
-        marriage: 0,
-        politicalface: 0,
-        emergencycontacts: '',
-        ecNumber: 0,
-        number: 0,
-        ecRelationship: '',
-        degree: 0,
-        graduatingschool: '',
-        graduationtime: new Date(),
-        specialized: '',
-        specialty: '',
-        personalskills: '',
-        professionaltitle: '',
-        zip: 0,
-        departmentmanager: 0,
-        socialsecurity: 0,
-        employeeImg: '',
-        }
-}
-// 弹窗确定
-const enterDialog = async () => {
-      let res
-      switch (type.value) {
-        case 'create':
-          res = await createOrderLnformation(formData.value)
-          break
-        case 'update':
-          res = await updateOrderLnformation(formData.value)
-          break
-        default:
-          res = await createOrderLnformation(formData.value)
-          break
-      }
-      if (res.code === 0) {
-        ElMessage({
-          type: 'success',
-          message: '创建/更改成功'
-        })
-        closeDialog()
-        getTableData()
-      }
-}
 </script>
 
+<!--下拉栏样式Cascader 级联选择器-->
 <style>
+/*位置：margin: 20rem是上下左右距离*/
+/*margin-top: 90px;是上外边距*/
+/*margin-bottom: 20px;是下外边距*/
+/*margin-left:20px;是左外边距*/
+/*margin-right:20px;是右外边距*/
+.example-block {
+  /*容器大小*/
+  height: 500px;
+  background: #e0e8fc;
+  /*给其父元素添加display: flex*/
+  /*实现子元素水平居中*/
+  /*给其父元素添加display: flex;弹性布局内容对齐（justify-content）属性：应用在弹性容器上，即父元素上。把弹性项沿着弹性容器的主轴线（main axis）对齐，如果横向有多个div，则X轴就为当前弹性容器的主轴线，Y轴为副轴线，反之亦然。*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*margin: 20rem;*/
+  /*margin-top: 50px;*/
+  /*margin-bottom: 20px;*/
+  /*margin-left:124px;*/
+  /*margin-right:20px;*/
+}
+.example-block0{
+  height: 95%;
+  width: 95%;
+  background: #e0e8fc;
+}
+.example-block1{
+  height: 90px;
+  width: auto;
+  background: #e0e8fc;
+}
+.example-block2{
+  /*容器大小*/
+  height: 400px;
+  /*给其父元素添加display: flex*/
+  /*实现子元素水平居中*/
+  /*给其父元素添加display: flex;弹性布局内容对齐（justify-content）属性：应用在弹性容器上，即父元素上。把弹性项沿着弹性容器的主轴线（main axis）对齐，如果横向有多个div，则X轴就为当前弹性容器的主轴线，Y轴为副轴线，反之亦然。*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-demonstration {
+  margin: 1rem;
+}
+.css-img24{
+  width: 173.33px;
+  height: 111.33px;
+}
+.css-img31{
+  width: 172.77px;
+  height: 113.33px;
+}
+.css-img32{
+  width: 207.33px;
+  height: 86.66px;
+}
+.css-img33{
+  width: 665px;
+  height: 81.33px;
+}
+.css-img34{
+  width: 420px;
+  height: 113.33px;
+}
+.css-img35{
+  width: 1259px;
+  height: 130px;
+}
+.css-img36{
+  width: 173.33px;
+  height: 111.33px;
+}
+.css-img37{
+  width: 173.33px;
+  height: 135px;
+}
+.css-img39{
+  width: 1830px;
+  height: 485px;
+}
 </style>
