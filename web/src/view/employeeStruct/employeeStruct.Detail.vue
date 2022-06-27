@@ -1,7 +1,7 @@
 <!--主页面-->
 <template>
 <!--  外层容器设置了高度和overflow实现滚动-->
-  <div style="height: 1000px; overflow: scroll">
+  <div style="height: 1000px; overflow: scroll; position: absolute">
 <!--    注意：chen-test-box已经被注解掉，整体无效-->
     <div class="chen-test-box">
       <div class="chen-test-title" v-for="fit in fits" :key="fit" >
@@ -245,6 +245,9 @@
           alt="元素加载失败"
           style="position: relative; left: 300px; top: 10%"
       >
+      <span class="example-block1-font">
+        姓名
+      </span>
 <!--1-1横线元素-->
       <img
           class="css-img2"
@@ -762,7 +765,6 @@ const options = [
   /*容器大小*/
   height: 300px;
   background: #e0e8fc;
-
   /*margin: 20rem;*/
   /*margin-top: 50px;*/
   /*margin-bottom: 20px;*/
@@ -773,6 +775,12 @@ const options = [
   /*容器大小*/
   height: 370px;
   background: #f94949;
+  /*置于底层*/
+  z-index: -1;
+}
+.example-block1-font{
+  font-family: QingNiaoHuaGuangXingKai;
+  background-color: #377ebb;
 }
 .example-block2 {
   /*容器大小*/

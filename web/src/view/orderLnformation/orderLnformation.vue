@@ -1,4 +1,4 @@
-<!--员工信息变更页面-->
+<!--详单信息页面-->
 <template>
   <!--  外层容器设置了高度和overflow实现滚动-->
   <div style="height: 1000px; overflow: scroll">
@@ -10,11 +10,11 @@
         <!--      <span class="chen-test-title">河南天盛景观规划设计院</span>-->
       </div>
     </div>
-    <!--    第一个标题框员工信息变更-->
+    <!--    详单信息-->
     <div>
       <div class="tableTitle2"><span class="midText2" style="font-family: QingNiaoHuaGuangXingKai; background-color: #377ebb">详单信息</span></div>
     </div>
-    <!--    员工信息变更页面-->
+    <!--    详单信息页面-->
     <div class="example-block" style="margin-top: 25px">
       <div class="example-block0">
         <span class="example-demonstration; el-cascader-panel; input:focus"></span>
