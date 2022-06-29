@@ -25,7 +25,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="position: relative; left: 12%; top: 15%"
+          style="position: relative; left: 12.1%; top: 15%"
       />
       <!--横排1-2cascader-->
       <el-cascader
@@ -36,7 +36,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="position: relative; left: 17%; top: 15%"
+          style="position: relative; left: 17.1%; top: 15%"
 
       />
       <el-cascader
@@ -47,7 +47,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="position: relative; left: 22%; top: 15%"
+          style="position: relative; left: 22.1%; top: 15%"
       />
       <el-cascader
           v-model="value"
@@ -57,7 +57,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="position: relative; left: 27%; top: 15%"
+          style="position: relative; left: 27.1%; top: 15%"
       />
       <el-cascader
           v-model="value"
@@ -67,7 +67,7 @@
           placeholder="Cascader 级联选择器"
           clearable
           class="el-cascader-panel"
-          style="position: relative; left: 32%; top: 15%"
+          style="position: relative; left: 32.1%; top: 15%"
 
       />
 <!--      竖排2-1cascader-->
@@ -245,8 +245,9 @@
           alt="元素加载失败"
           style="position: relative; left: 300px; top: 10%"
       >
-      <span class="example-block1-font">
-        姓名
+      <span class="example-block1-font" style="left: 360px;top: 523px">
+        工号
+        <el-input v-model="searchInfo.worknumber" class="input-el-input"/>
       </span>
 <!--1-1横线元素-->
       <img
@@ -255,6 +256,10 @@
           alt="元素加载失败"
           style="position: relative; left: 280px; top: 18%"
       >
+      <span class="example-block1-font" style="left: 681px;top: 523px">
+        姓名
+        <el-input v-model="searchInfo.name" class="input-el-input"/>
+      </span>
 <!--      1-2放字体的元素-->
       <img
           class="css-img1"
@@ -262,6 +267,10 @@
           alt="元素加载失败"
           style="position: relative; left: 320px; top: 10%"
       >
+      <span class="example-block1-font" style="left: 1065px;top: 523px">
+        年龄
+        <el-input v-model="searchInfo.age" class="input-el-input"/>
+      </span>
       <!--1-2横线元素-->
       <img
           class="css-img2"
@@ -269,6 +278,12 @@
           alt="元素加载失败"
           style="position: relative; left: 300px; top: 18%"
       >
+      <span class="example-block1-font" style="left: 1390px;top: 523px">
+        性别
+        <el-select v-model="searchInfo.sex" clearable class="input-el-select">
+            <el-option v-for="(item,key) in genderOptions" :key="key" :label="item.label" :value="item.value" />
+        </el-select>
+      </span>
       <!--      1-3放字体的元素-->
       <img
           class="css-img1"
@@ -276,6 +291,15 @@
           alt="元素加载失败"
           style="position: relative; left: 400px; top: 10%"
       >
+<!--      <span class="example-block1-font" style="left: 340px;top: 615px;letter-spacing:-14px;">-->
+<!--        生日月份-->
+<!--      </span>-->
+      <span class="example-block1-font" style="left: 356px;top: 617px">
+        部门
+        <el-select v-model="searchInfo.department" placeholder="请选择" clearable class="input-el-select">
+            <el-option v-for="(item,key) in departmentOptions" :key="key" :label="item.label" :value="item.value" />
+        </el-select>
+      </span>
       <!--1-3横线元素-->
       <img
           class="css-img2"
@@ -283,6 +307,12 @@
           alt="元素加载失败"
           style="position: relative; left: 380px; top: 18%"
       >
+      <span class="example-block1-font" style="left: 681px;top: 617px">
+        岗位
+          <el-select v-model="searchInfo.job" placeholder="请选择" clearable class="input-el-select">
+            <el-option v-for="(item,key) in jobOptions" :key="key" :label="item.label" :value="item.value" />
+          </el-select>
+      </span>
       <!--      1-4放字体的元素-->
       <img
           class="css-img1"
@@ -290,6 +320,12 @@
           alt="元素加载失败"
           style="position: relative; left: 420px; top: 10%"
       >
+      <span class="example-block1-font" style="left: 1065px;top: 622px">
+        学历
+         <el-select v-model="searchInfo.degree" placeholder="请选择" clearable class="input-el-select">
+            <el-option v-for="(item,key) in degreeOptions" :key="key" :label="item.label" :value="item.value" />
+         </el-select>
+      </span>
       <!--1-4横线元素-->
       <img
           class="css-img2"
@@ -297,6 +333,12 @@
           alt="元素加载失败"
           style="position: relative; left: 400px; top: 18%"
       >
+      <span class="example-block1-font" style="left: 1383px;top: 622px;letter-spacing:-14px;">
+        生日月份
+        <el-select v-model="searchInfo.birth_month" placeholder="请选择" clearable class="input-el-select">
+            <el-option v-for="(item,key) in birth_monthOptions" :key="key" :label="item.label" :value="item.value" />
+        </el-select>
+      </span>
       <!--      2-1放字体的元素-->
       <img
           class="css-img3"
@@ -472,6 +514,8 @@ const url =
 
 // 页面下拉栏Cascader 级联选择器
 import { ref } from 'vue'
+//筛选员工信息条件输入框
+const searchInfo = ref({})
 
 const value = ref([])
 
@@ -751,10 +795,9 @@ const options = [
     ],
   },
 ]
-
 </script>
-
 <!--下拉栏样式Cascader 级联选择器-->
+<!--scoped用于将样式只作用于当下模块下-->
 <style>
 /*位置：margin: 20rem是上下左右距离*/
 /*margin-top: 90px;是上外边距*/
@@ -780,7 +823,11 @@ const options = [
 }
 .example-block1-font{
   font-family: QingNiaoHuaGuangXingKai;
-  background-color: #377ebb;
+  position: absolute;
+  z-index: 1;
+  /*display: inline;*/
+  font-size: 35px;
+  color: #FFFFFF;
 }
 .example-block2 {
   /*容器大小*/
@@ -792,7 +839,23 @@ const options = [
 }
 /*级联选择器背景颜色*/
 .el-cascader-panel{
-  background: #f9c449 !important;
+  background: #f9c449;
+}
+.input-el-input{
+  width: 25%;
+  --el-input-bg-color: transparent;
+  --el-input-border: none;
+  font-size: 35px;
+  font-family: QingNiaoHuaGuangXingKai;
+}
+.input-el-select{
+  width: 50%;
+  border:none;
+  outline:none;
+  --el-color-white: transparent;
+  --el-border-base: transparent;
+  --el-text-color-placeholder: transparent;
+  top: -10px;
 }
 .css-img1{
   width: 153px;
@@ -822,7 +885,4 @@ const options = [
   width: 487.27px;
   height: 487.27px;
 }
-
-
-
 </style>
