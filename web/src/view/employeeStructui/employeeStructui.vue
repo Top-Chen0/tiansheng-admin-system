@@ -587,7 +587,7 @@ const getTableData = async() => {
   }
 }
 
-//getTableData()//控制搜索页不自动加载数据
+getTableData()//控制搜索页不自动加载数据
 
 // ============== 表格控制部分结束 ===============
 

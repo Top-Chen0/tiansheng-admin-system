@@ -603,7 +603,85 @@
     <!--    员工信息查询页面-->
     <div class="example-block">
       <div class="example-block0" style="margin-top: 25px;border:5px solid rgb(55,126,187);">
-
+        <el-table
+            ref="multipleTable"
+            :data="tableData"
+            tooltip-effect="dark"
+            row-key="ID"
+            style="position: absolute;width: 96.45%; height: 43.6%;background-color: #f9c449"
+        >
+          <el-table-column type="selection" width="40" />
+          <el-table-column align="center" label="日期" width="180">
+            <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>
+          </el-table-column>
+          <el-table-column align="center" label="工号" prop="worknumber" width="60" />
+          <el-table-column align="center" label="姓名" prop="name" width="70" />
+          <el-table-column align="center" label="年龄" prop="age" width="60" />
+          <el-table-column align="center" label="性别" prop="sex" width="55">
+            <template #default="scope">
+              {{ filterDict(scope.row.sex,genderOptions) }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="部门" prop="department" width="330">
+            <template #default="scope">
+              {{ filterDict(scope.row.department,departmentOptions) }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="入职日期" prop="dateofentry" width="120" />
+          <el-table-column align="center" label="岗位" prop="job" width="150">
+            <template #default="scope">
+              {{ filterDict(scope.row.job,jobOptions) }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="生日月份" prop="birth_month" width="120">
+              <template #default="scope">
+              {{ filterDict(scope.row.birth_month,birth_monthOptions) }}
+              </template>
+          </el-table-column>
+          <el-table-column align="center" label="籍贯" prop="origin" width="120" />
+          <el-table-column align="center" label="民族" prop="ethnicgroup" width="120" />
+          <el-table-column align="center" label="婚姻状况" prop="marriage" width="120">
+              <template #default="scope">
+              {{ filterDict(scope.row.marriage,marriageOptions) }}
+              </template>
+          </el-table-column>
+          <el-table-column align="center" label="身份证号" prop="socialsecuritynumber" width="120" />
+          <el-table-column align="center" label="政治面貌" prop="politicalface" width="120">
+              <template #default="scope">
+              {{ filterDict(scope.row.politicalface,politicalfaceOptions) }}
+              </template>
+          </el-table-column>
+          <el-table-column align="center" label="学历" prop="degree" width="120">
+              <template #default="scope">
+              {{ filterDict(scope.row.degree,degreeOptions) }}
+              </template>
+          </el-table-column>
+          <el-table-column align="center" label="毕业院校" prop="graduatingschool" width="120" />
+          <el-table-column align="center" label="专业" prop="specialized" width="120" />
+          <el-table-column align="center" label="特长" prop="specialty" width="120" />
+          <el-table-column align="center" label="出生日期" prop="dateofbirth" width="120" />
+          <el-table-column align="center" label="专业职称" prop="professionaltitle" width="120" />
+          <el-table-column align="center" label="邮编" prop="zip" width="120" />
+          <el-table-column align="center" label="部门经理" prop="departmentmanager" width="120">
+            <template #default="scope">
+              {{ filterDict(scope.row.departmentmanager,departmentmanagerOptions) }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="社保状态" prop="socialsecurity" width="120">
+            <template #default="scope">
+              {{ filterDict(scope.row.socialsecurity,socialsecurityOptions) }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="个人技能" prop="personalskills" width="120" />
+          <el-table-column align="center" label="毕业时间" prop="graduationtime" width="120" />
+          <el-table-column align="center" label="户口所在地" prop="householdregistration" width="120" />
+          <el-table-column align="center" label="身份证详细地址" prop="idaddress" width="120" />
+          <el-table-column align="center" label="现住详细地址" prop="address" width="120" />
+          <el-table-column align="center" label="紧急联系人" prop="emergencycontacts" width="120" />
+          <el-table-column align="center" label="紧急联系人电话" prop="ec_number" width="120" />
+          <el-table-column align="center" label="与联系人的关系" prop="ec_relationship" width="120" />
+          <el-table-column align="center" label="手机号码" prop="number" width="120" />
+        </el-table>
       </div>
     </div>
     <!--    添加页面第三条横线-->
@@ -611,21 +689,32 @@
     <!--最底栏-->
     <div style="width: 100%;height: 110px;background-color: #377ebb;margin-top: 10px;">
     </div>
-
   </div>
 </template>
+
+<script>
+export default {
+  name: 'EmployeeStructui'
+}
+</script>
 
 <!--图像加载-->
 <script setup>
 import {
   createEmployeeStructui,
+  deleteEmployeeStructui,
+  deleteEmployeeStructuiByIds,
   updateEmployeeStructui,
-  findEmployeeStructui
+  findEmployeeStructui,
+  getEmployeeStructuiList
 } from '@/api/employeeStructui'
 // 自动获取字典
-import { getDictFunc } from '@/utils/format'
+import { getDictFunc, formatDate, formatBoolean, filterDict } from '@/utils/format'
+import { Search } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from "vue-router"
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { useUserStore } from '@/pinia/modules/user'
+
 // import { ref } from 'vue'
 const route = useRoute()
 const router = useRouter()
@@ -673,6 +762,13 @@ const formData = ref({
   socialsecurity: undefined,
 })
 
+// =========== 表格控制部分 ===========
+const page = ref(1)
+const total = ref(0)
+const pageSize = ref(10)
+const tableData = ref([])
+const searchInfo = ref({})
+
 // 初始化方法
 const init = async () => {
   // 建议通过url传参获取目标数据ID 调用 find方法进行查询数据操作 从而决定本页面是create还是update 以下为id作为url参数示例
@@ -695,6 +791,21 @@ const init = async () => {
   politicalfaceOptions.value = await getDictFunc('politicalface')
   socialsecurityOptions.value = await getDictFunc('socialsecurity')
 }
+
+
+
+// 查询
+const getTableData = async() => {
+  const table = await getEmployeeStructuiList({ page: page.value, pageSize: pageSize.value, ...searchInfo.value })
+  if (table.code === 0) {
+    tableData.value = table.data.list
+    total.value = table.data.total
+    page.value = table.data.page
+    pageSize.value = table.data.pageSize
+  }
+}
+
+getTableData()// 控制搜索页不自动加载数据
 
 init()
 // 保存按钮
@@ -1155,6 +1266,8 @@ const options = [
   font-size: 40px;
   font-family: QingNiaoHuaGuangXingKai;
 }
+
+
 .css-img9{
   width: 153px;
   height: 90px;
