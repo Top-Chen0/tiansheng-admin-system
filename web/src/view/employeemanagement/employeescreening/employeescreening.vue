@@ -15,6 +15,7 @@
       <div class="tableTitle2"><span class="midText2" style="font-family: QingNiaoHuaGuangXingKai; background-color: #377ebb">员工信息录入</span></div>
     </div>
     <!--    员工信息录入页面-->
+    <el-form ref="form">
     <div class="example-block">
       <div class="example-block0"  style="margin-top: 25px;border:5px solid rgb(55,126,187);">
         <span class="example-demonstration; el-cascader-panel; input:focus"></span>
@@ -580,6 +581,7 @@
 <!--        >-->
       </div>
     </div>
+    </el-form>
     <div class="example-block1">
       <!--        保存按钮样式-->
       <img
@@ -600,17 +602,27 @@
     </div>
 
 
-    <!--    员工信息查询页面-->
-    <div class="example-block">
+    <!--    员工信息显示页面-->
+    <div class="example-block2">
       <div class="example-block0" style="margin-top: 25px;border:5px solid rgb(55,126,187);">
         <el-table
             ref="multipleTable"
             :data="tableData"
+            height="200"
             tooltip-effect="dark"
             row-key="ID"
-            style="position: absolute;width: 96.45%; height: 43.6%;background-color: #f9c449"
+            style="position: absolute;width: 96.45%; height: 51.6%;background-color: #f9c449"
+            :cell-style="{borderColor:'#C0C0C0'}"
+            :header-cell-style="{borderColor:'#C0C0C0'}"
+            border
         >
-          <el-table-column type="selection" width="40" />
+<!--          <el-table-column type="selection" width="40" />-->
+          <el-table-column align="center" label="操作" width="200">
+            <template #default="scope">
+              <el-button type="text" icon="edit" size="small" class="table-button" @click="goPkgs">详情-变更</el-button>
+              <el-button type="text" icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
           <el-table-column align="center" label="日期" width="180">
             <template #default="scope">{{ formatDate(scope.row.CreatedAt) }}</template>
           </el-table-column>
@@ -683,6 +695,18 @@
           <el-table-column align="center" label="手机号码" prop="number" width="120" />
         </el-table>
       </div>
+    </div>
+<!--    分页选择器-->
+    <div class="gva-pagination">
+      <el-pagination
+          layout="total, sizes, prev, pager, next, jumper"
+          :current-page="page"
+          :page-size="pageSize"
+          :page-sizes="[5, 30, 50, 100]"
+          :total="total"
+          @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
+      />
     </div>
     <!--    添加页面第三条横线-->
     <div class="tableTitle0"><span class="midText0"></span></div>
@@ -836,8 +860,22 @@ const back = () => {
 }
 
 
+// 点击详情-变更跳转到员工信息变更页面
+const goPkgs = () => {
+  router.push({ name: 'EmployeeModificationhr' })
+}
 
+// 分页
+const handleSizeChange = (val) => {
+  pageSize.value = val
+  getTableData()
+}
 
+// 修改页面容量
+const handleCurrentChange = (val) => {
+  page.value = val
+  getTableData()
+}
 
 // 设计页面底层
 const fits = [ 'cover' ]
@@ -1160,6 +1198,23 @@ const options = [
   height: 90px;
   width: auto;
   background: #e0e8fc;
+}
+.example-block2 {
+  /*容器大小*/
+  height: 550px;
+  background: #e0e8fc;
+
+  /*给其父元素添加display: flex*/
+  /*实现子元素水平居中*/
+  /*给其父元素添加display: flex;弹性布局内容对齐（justify-content）属性：应用在弹性容器上，即父元素上。把弹性项沿着弹性容器的主轴线（main axis）对齐，如果横向有多个div，则X轴就为当前弹性容器的主轴线，Y轴为副轴线，反之亦然。*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*margin: 20rem;*/
+  /*margin-top: 50px;*/
+  /*margin-bottom: 20px;*/
+  margin-left:-20px;
+  margin-right:-20px;
 }
 .example-demonstration {
   margin: 1rem;
